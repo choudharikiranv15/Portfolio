@@ -4,6 +4,7 @@ import Section from './components/Layout/Section';
 
 import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
+import Experience from './components/Experience/Experience';
 import Works from './components/Works/Works';
 
 import './App.scss';
@@ -23,7 +24,12 @@ function App() {
           <Services />
         </Section>
 
-        {/* Section 3: Works */}
+        {/* Section 3: Journey / Experience */}
+        <Section className="sec-experience">
+          <Experience />
+        </Section>
+
+        {/* Section 4: Works */}
         <Section className="sec-works">
           <Works />
         </Section>
