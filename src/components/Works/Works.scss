@@ -19,20 +19,22 @@
         .subtitle {
             font-size: 1.2rem;
             color: var(--text-secondary);
+            letter-spacing: 0.05em;
         }
     }
 
     .projects-list {
         display: flex;
-        gap: 3rem;
+        gap: 2rem;
         width: 100%;
 
         .project-item {
             flex: 1;
-            height: 450px;
+            height: 480px;
             display: flex;
             flex-direction: column;
             cursor: pointer;
+            min-width: 250px;
 
             .project-image-placeholder {
                 flex-grow: 1;
@@ -43,28 +45,69 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border: 1px solid #333;
+                transition: border-color 0.3s ease;
+
+                .project-title-large {
+                    font-size: 2rem;
+                    font-weight: 800;
+                    color: rgba(255, 255, 255, 0.8);
+                    text-transform: uppercase;
+                    z-index: 2;
+                    text-align: center;
+                    padding: 1rem;
+                }
 
                 .id-number {
                     font-size: 8rem;
                     font-weight: 900;
-                    color: rgba(255, 255, 255, 0.05);
+                    color: rgba(255, 255, 255, 0.03);
                     position: absolute;
                     bottom: -20px;
                     right: -10px;
+                    z-index: 1;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+            }
+
+            &:hover .project-image-placeholder {
+                border-color: #fff;
+
+                &::after {
+                    opacity: 1;
                 }
             }
 
             .project-info {
                 h3 {
-                    font-size: 1.8rem;
-                    margin-bottom: 0.5rem;
+                    font-size: 1.5rem;
+                    margin-bottom: 0.3rem;
+                    font-weight: 700;
                 }
 
-                p {
-                    font-size: 1rem;
+                .category {
+                    font-size: 0.9rem;
                     color: var(--text-secondary);
                     text-transform: uppercase;
                     letter-spacing: 0.1em;
+                    margin-bottom: 0.5rem;
+                }
+
+                .description {
+                    font-size: 0.95rem;
+                    color: #bbb;
+                    line-height: 1.4;
                 }
             }
         }
