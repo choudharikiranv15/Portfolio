@@ -8,7 +8,6 @@
     overflow: hidden;
     padding: 0 5%;
     perspective: 1000px;
-    /* Essential for the 3D imaginary feel */
 
     .exp-header {
         margin-bottom: 2rem;
@@ -20,6 +19,9 @@
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
@@ -38,18 +40,26 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        /* Space nodes evenly */
 
         .horizon-line {
             position: absolute;
             top: 50%;
             left: -50vw;
-            /* Extend beyond viewport */
             width: 200vw;
             height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             z-index: 0;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+
+            .signal-packet {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, #fff, transparent);
+                box-shadow: 0 0 15px #fff;
+            }
         }
 
         .timeline-node {
@@ -58,130 +68,91 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 300px;
+            width: 350px;
 
-            /* Alternate node positions verticaly for visual interest */
             &.node-0 {
-                transform: translateY(-30px);
+                transform: translateY(-40px);
             }
 
             &.node-1 {
-                transform: translateY(30px);
+                transform: translateY(40px);
+            }
+
+            .beam {
+                width: 1px;
+                height: 80px;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+                margin: 10px 0;
+            }
+
+            &.node-0 {
+                flex-direction: column-reverse;
+
+                .beam {
+                    background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
+                }
             }
 
             .node-marker {
-                width: 20px;
-                height: 20px;
+                position: relative;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
                 background: #fff;
-                border-radius: 50%;
-                position: absolute;
-                top: 50%;
-                /* Center on the horizon line logic (adjusted by card layout) */
+                z-index: 5;
 
-                /* Actually let's place the marker ON the line, so we need to offset card */
-                top: calc(50% - 10px);
-                /* Wait, flexbox makes this relative. Let's position marker relative to the container center */
-            }
-
-            /* Re-thinking layout: Center marker on the horizon line, push card up or down */
-        }
-
-        /* Layout fix: The track is flex, but we want the marker to conceptually sit on the horizon-line */
-        /* So we hard-code the visuals */
-    }
-
-    /* Specific styling for the components above */
-    .timeline-node {
-
-        /* Beam connecting card to line */
-        .beam {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
-            margin: 10px 0;
-        }
-
-        /* Adjust order based on index */
-        &.node-0 {
-            flex-direction: column-reverse;
-
-            /* Card above line */
-            .beam {
-                background: linear-gradient(to top, rgba(255, 255, 255, 0.5), transparent);
-            }
-        }
-
-        /* Default node-1 is column (Card below line) */
-
-        .node-marker {
-            position: relative;
-            /* It's part of the flow now */
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #fff;
-            z-index: 5;
-
-            .inner-core {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200%;
-                height: 200%;
-                border-radius: 50%;
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                animation: ripple 2s infinite;
+                .inner-core {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 300%;
+                    height: 300%;
+                    border-radius: 50%;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    animation: ripple 3s infinite;
+                }
             }
         }
 
         .exp-card {
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 2rem;
             width: 100%;
             position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-
-            &:hover {
-                transform: scale(1.05) translateY(-5px);
-                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-                border-color: rgba(255, 255, 255, 0.3);
-
-                .glow-effect {
-                    opacity: 0.2;
-                    transform: scale(2);
-                }
-            }
+            border-radius: 8px;
+            //   overflow: hidden; /* Removed to allow 3D overflow effects if needed, but safer to keep. Check tilt clips. */
 
             .period {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 color: var(--text-secondary);
                 display: block;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.8rem;
                 font-family: monospace;
+                letter-spacing: 0.05em;
             }
 
             h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
                 font-weight: 700;
-                margin-bottom: 0.2rem;
+                margin-bottom: 0.3rem;
                 color: #fff;
             }
 
             h4 {
-                font-size: 1rem;
-                font-weight: 400;
-                color: var(--text-secondary);
-                margin-bottom: 1rem;
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: #aaa;
+                margin-bottom: 1.2rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
             }
 
             p {
                 font-size: 0.95rem;
-                line-height: 1.5;
+                line-height: 1.6;
                 color: #ccc;
             }
 
@@ -191,9 +162,7 @@
                 left: -50%;
                 width: 200%;
                 height: 200%;
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-                opacity: 0;
-                transition: all 0.6s ease;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
                 pointer-events: none;
                 z-index: 0;
             }
@@ -203,44 +172,29 @@
     /* Background floating particles */
     .floating-particles {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
         pointer-events: none;
         background-image:
-            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 100px 100px;
+            radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 80px 80px;
         z-index: 1;
-        animation: floatSpace 60s linear infinite;
+        opacity: 0.6;
     }
 }
 
 @keyframes ripple {
     0% {
-        width: 100%;
-        height: 100%;
+        transform: translate(-50%, -50%) scale(0.5);
         opacity: 0.8;
     }
 
     100% {
-        width: 300%;
-        height: 300%;
+        transform: translate(-50%, -50%) scale(1.5);
         opacity: 0;
     }
-}
-
-@keyframes floatSpace {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100px);
-    }
-
-    /* Parallax illusion */
 }
 
 @media (max-width: 1024px) {
@@ -253,15 +207,22 @@
             height: 100%;
             left: 20px;
             top: 0;
+
+            .signal-packet {
+                width: 100%;
+                height: 100px;
+                background: linear-gradient(to bottom, transparent, #fff, transparent);
+                top: -100px;
+                /* animate top */
+                left: 0;
+            }
         }
 
         .timeline-node {
             width: 100%;
             flex-direction: row !important;
-            /* Stack horizontally on mobile vertical list */
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-            /* Make space for line */
+            margin-bottom: 3rem;
+            padding-left: 3.5rem;
 
             .beam {
                 display: none;
@@ -269,7 +230,7 @@
 
             .node-marker {
                 position: absolute;
-                left: 12px;
+                left: 15px;
                 top: 2rem;
             }
         }

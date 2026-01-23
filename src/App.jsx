@@ -7,11 +7,13 @@ import Services from './components/Services/Services';
 import Experience from './components/Experience/Experience';
 import Works from './components/Works/Works';
 
+
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
+      {/* Header removed for minimal design */}
       <HorizontalScroll>
 
         {/* Section 1: Introduction */}
