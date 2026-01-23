@@ -1,0 +1,107 @@
+.services-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+
+    .services-header {
+        margin-bottom: 4rem;
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .line {
+            width: 100px;
+            height: 4px;
+            background: var(--text-color);
+        }
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 100%;
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 400px;
+            /* Fixed height for uniformity */
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            .icon {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 1rem;
+                color: var(--text-secondary);
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                flex-grow: 1;
+            }
+
+            .tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+
+                span {
+                    font-size: 0.8rem;
+                    padding: 0.3rem 0.6rem;
+                    border: 1px solid var(--border-color);
+                    border-radius: 20px;
+                }
+            }
+
+            /* Hover state styles handled in JS for bg/color swap, 
+         but we need to ensure text colors adapt correctly in CSS override */
+            &:hover {
+                p {
+                    color: #333;
+                }
+
+                .tags span {
+                    border-color: #333;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .services-container .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .services-container .services-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+
+        .service-card {
+            height: auto;
+            min-height: 300px;
+        }
+    }
+}

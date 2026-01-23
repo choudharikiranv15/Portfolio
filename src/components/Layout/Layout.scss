@@ -1,0 +1,29 @@
+.layout-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    /* Hide the native scroll during the pinned phase */
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 400%;
+    /* Depends on number of sections. Dynamic in JS usually, but setting wide */
+    height: 100vh;
+    will-change: transform;
+}
+
+.horizontal-section {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+
+    /* Ensure text is readable over the 3D background */
+    // backdrop-filter: blur(2px); 
+}

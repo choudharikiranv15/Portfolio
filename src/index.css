@@ -1,0 +1,54 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #f0f0f0;
+    --text-secondary: #888888;
+    --accent-color: #ffffff;
+    --border-color: #333333;
+    --card-bg: rgba(255, 255, 255, 0.05);
+
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.5;
+    font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    /* Hide default horizontal scrollbar */
+    overflow-y: auto;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

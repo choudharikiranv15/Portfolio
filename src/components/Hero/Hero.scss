@@ -1,0 +1,138 @@
+.hero-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    z-index: 10;
+
+    .hero-text-container {
+        flex: 1;
+        z-index: 2;
+    }
+
+    .hero-name {
+        font-size: 8vw;
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+    }
+
+    .hero-divider {
+        width: 60px;
+        height: 4px;
+        background: var(--text-color);
+        margin-bottom: 2rem;
+    }
+
+    .hero-role {
+        font-size: 1.5vw;
+        font-weight: 400;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        margin-bottom: 4rem;
+    }
+
+    .scroll-indicator {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-color);
+
+        .arrow-icon {
+            font-size: 1.2rem;
+            animation: bounceRight 2s infinite;
+        }
+    }
+
+    .hero-graphic {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .circle-graphic {
+            width: 30vw;
+            height: 30vw;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 60%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80%;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+}
+
+@keyframes bounceRight {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        .hero-name {
+            font-size: 15vw;
+        }
+
+        .hero-divider {
+            margin: 2rem auto;
+        }
+
+        .hero-role {
+            font-size: 4vw;
+        }
+
+        .scroll-indicator {
+            justify-content: center;
+            margin-top: 3rem;
+
+            .arrow-icon {
+                transform: rotate(90deg);
+                /* Point down on mobile */
+                animation: bounceDown 2s infinite;
+            }
+        }
+    }
+
+    @keyframes bounceDown {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(90deg);
+        }
+
+        50% {
+            transform: translateY(10px) rotate(90deg);
+        }
+    }
+}
