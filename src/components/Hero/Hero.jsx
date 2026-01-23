@@ -35,7 +35,12 @@ const Hero = () => {
 
             {/* Abstract 3D shape placeholder or simplified graphic */}
             <div className="hero-graphic">
-                <div className="circle-graphic"></div>
+                <div className="circle-graphic">
+                    <div className="ring ring-1"></div>
+                    <div className="ring ring-2"></div>
+                    <div className="ring ring-3"></div>
+                    <div className="core"></div>
+                </div>
             </div>
         </div>
     );
