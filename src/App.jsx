@@ -37,18 +37,19 @@ function App() {
         </Section>
 
         {/* Section 4: Contact / Footer */}
-        <Section className="sec-contact" style={{ background: '#f0f0f0', color: '#050505' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h2 style={{ fontSize: '5rem', textTransform: 'uppercase', lineHeight: 1 }}>Let's Work<br />Together</h2>
-            <p style={{ marginTop: '2rem', fontSize: '1.2rem', maxWidth: '600px' }}>
+        {/* Section 4: Contact / Footer */}
+        <Section className="sec-contact bg-[#f0f0f0] text-[#050505]">
+          <div className="flex flex-col items-center text-center w-full px-4">
+            <h2 className="text-[12vw] md:text-8xl font-black uppercase leading-[0.9] tracking-tighter">
+              Let's Work<br />Together
+            </h2>
+            <p className="mt-8 text-lg md:text-2xl max-w-lg md:max-w-2xl font-medium text-gray-700 leading-relaxed">
               Open for Freelance Projects in AI, Full Stack Development, and DevOps.
             </p>
-            <a href="mailto:contact@kiranchoudhari.com" style={{
-              marginTop: '3rem',
-              fontSize: '1.5rem',
-              textDecoration: 'underline',
-              fontWeight: 'bold'
-            }}>
+            <a
+              href="mailto:contact@kiranchoudhari.com"
+              className="mt-12 text-xl md:text-3xl font-bold underline decoration-2 underline-offset-8 hover:text-gray-600 transition-colors"
+            >
               Get in Touch
             </a>
           </div>
