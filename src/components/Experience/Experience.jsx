@@ -6,10 +6,10 @@ const journeyItems = [
         id: 1,
         type: 'education',
         role: "B.E. Computer Science",
-        org: "SPPU",
+        org: "Savitribai Phule Pune University",
         period: "2022 — 2026",
-        desc: "Specialized in AI/ML.",
-        tech: ["DSA", "System Design"],
+        desc: "Specialized in Artificial Intelligence & Machine Learning. Active member of the coding club.",
+        tech: ["DSA", "System Design", "AI/ML"],
         color: "#10b981", // Green
         position: 'top'
     },
@@ -19,8 +19,8 @@ const journeyItems = [
         role: "AI Intern",
         org: "Crafttech 360",
         period: "Sep '25 — Nov '25",
-        desc: "Built RAG pipelines & Edge AI models.",
-        tech: ["Python", "TensorFlow"],
+        desc: "Built RAG pipelines and deployed optimized Edge AI models for real-time inference.",
+        tech: ["Python", "TensorFlow", "RAG"],
         color: "#db2777", // Pink
         position: 'bottom'
     },
@@ -30,8 +30,8 @@ const journeyItems = [
         role: "Full Stack Intern",
         org: "Salesence",
         period: "Jun '25 — Present",
-        desc: "High-scale APIs & Scraping Engines.",
-        tech: ["Node.js", "AWS"],
+        desc: "Architecting high-throughput REST APIs and scraping engines for scalable data solutions.",
+        tech: ["Node.js", "React", "AWS"],
         color: "#4f46e5", // Indigo
         position: 'top'
     }
@@ -41,15 +41,15 @@ const HorizontalNode = ({ item, index }) => {
     const isTop = item.position === 'top';
 
     return (
-        <div className="relative flex flex-col items-center justify-center min-w-[300px] md:min-w-[400px] h-full">
+        <div className="relative flex flex-col items-center justify-center min-w-[350px] md:min-w-[450px] h-full z-10 px-4">
 
             {/* The Node Dot on the Line */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
                 <motion.div
-                    initial={{ scale: 0 }}
+                    initial={{ scale: 0.5, opacity: 1 }}
                     whileInView={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, delay: index * 0.2 }}
-                    className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-white relative group cursor-pointer"
+                    viewport={{ once: true }}
+                    className="w-4 h-4 rounded-full bg-[#0a0a0a] border-2 border-white relative cursor-pointer"
                     style={{ borderColor: item.color }}
                 >
                     <div className="absolute inset-0 rounded-full animate-ping opacity-30" style={{ backgroundColor: item.color }}></div>
@@ -57,25 +57,22 @@ const HorizontalNode = ({ item, index }) => {
             </div>
 
             {/* Connecting Line from Dot to Card */}
-            <motion.div
-                initial={{ height: 0 }}
-                whileInView={{ height: '80px' }}
-                transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
-                className={`absolute w-[1px] bg-gradient-to-b from-transparent to-white/30 z-0 ${isTop ? 'bottom-1/2 mb-3 bg-gradient-to-t' : 'top-1/2 mt-3'}`}
-            ></motion.div>
+            <div
+                className={`absolute w-[1px] bg-white/20 z-0 ${isTop ? 'bottom-1/2 mb-2' : 'top-1/2 mt-2'}`}
+                style={{ height: '60px' }}
+            ></div>
 
-            {/* Content Card */}
+            {/* Content Card - ensured opacity 1 */}
             <motion.div
-                initial={{ opacity: 0, y: isTop ? 20 : -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
-                className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full px-4`}
+                initial={{ opacity: 1, y: 0 }}
+                className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full left-0 right-0 px-4`}
             >
-                <div className="bg-[#111] border border-white/10 p-6 rounded-xl relative hover:border-white/30 transition-colors group">
-                    {/* Decorative Top Border */}
+                <div className="bg-[#0a0a0a] border border-white/10 p-6 rounded-xl relative hover:border-white/30 transition-all duration-300 shadow-2xl z-20">
+
+                    {/* Top Color Accent */}
                     <div className="absolute top-0 left-4 right-4 h-[2px]" style={{ backgroundColor: item.color }}></div>
 
-                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-2">
+                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">
                         {item.type} // {item.period}
                     </span>
                     <h3 className="text-xl font-bold text-white leading-tight mb-1">
@@ -88,7 +85,7 @@ const HorizontalNode = ({ item, index }) => {
 
                     <div className="flex flex-wrap gap-2">
                         {item.tech.map((t, i) => (
-                            <span key={i} className="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400 border border-white/5 font-mono">
+                            <span key={i} className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-500 border border-white/5 font-mono">
                                 {t}
                             </span>
                         ))}
@@ -104,44 +101,27 @@ const Experience = () => {
     return (
         <div className="w-full h-screen flex flex-col justify-center bg-[#0a0a0a] relative overflow-hidden">
 
-            {/* Header (Absolute Top Left in the section) */}
-            <div className="absolute top-20 left-10 md:left-20 z-20">
-                <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white opacity-20 select-none">
+            {/* Header */}
+            <div className="absolute top-20 left-10 md:left-24 z-20 pointer-events-none">
+                <h2 className="text-6xl md:text-7xl font-black tracking-tighter text-white select-none">
                     JOURNEY
                 </h2>
-                <div className="h-1 w-24 bg-white/20 mt-2"></div>
+                <div className="h-1 w-20 bg-blue-600 mt-2"></div>
             </div>
 
-            {/* Horizontal Timeline Track */}
-            <div className="relative w-full flex items-center justify-center px-10 md:px-0">
+            {/* Scrollable Container */}
+            <div className="relative w-full h-full flex items-center overflow-x-auto no-scrollbar pt-20">
 
                 {/* Main Horizontal Line */}
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-[200vw] z-0"></div>
 
-                {/* Glowing Beam (Left to Right) */}
-                <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent z-0 opacity-50"
-                ></motion.div>
-
-                {/* Nodes Container */}
-                <div className="flex items-center justify-center gap-4 md:gap-12 relative z-10 w-full max-w-6xl">
+                {/* Nodes Wrapper */}
+                <div className="flex items-center gap-0 min-w-max px-20 h-[500px]">
                     {journeyItems.map((item, index) => (
                         <HorizontalNode key={item.id} item={item} index={index} />
                     ))}
                 </div>
 
-            </div>
-
-            {/* Background Grid */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
-                style={{
-                    backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-                    backgroundSize: '60px 60px'
-                }}>
             </div>
 
         </div>
