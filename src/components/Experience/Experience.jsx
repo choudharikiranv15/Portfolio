@@ -158,18 +158,30 @@ const MobileNode = ({ item, isLast, index }) => {
 
 const Experience = () => {
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden py-10 md:py-0">
+        <div
+            className="bg-[#0a0a0a]"
+            style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 'clamp(2rem, 5vw, 5rem)',
+                overflow: 'hidden',
+            }}
+        >
 
             {/* Header */}
-            <div className="w-full max-w-[1400px] px-6 md:px-20 mb-8 md:mb-16 z-20 pointer-events-none md:mt-20">
-                <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white select-none">
+            <div className="w-full max-w-[1400px] mb-8 lg:mb-16 z-20">
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white">
                     JOURNEY
                 </h2>
                 <div className="h-1 w-16 md:w-20 bg-blue-600 mt-2"></div>
             </div>
 
             {/* --- Mobile View (Vertical) --- */}
-            <div className="md:hidden w-full max-w-xl px-6 relative z-10">
+            <div className="md:hidden w-full max-w-xl relative z-10">
                 {journeyItems.map((item, index) => (
                     <MobileNode
                         key={item.id}
@@ -181,10 +193,10 @@ const Experience = () => {
             </div>
 
             {/* --- Desktop View (Horizontal) --- */}
-            <div className="hidden md:flex relative w-full flex-1 items-center justify-center px-20">
+            <div className="hidden md:flex relative w-full flex-1 items-center justify-center px-10">
 
                 {/* Main Horizontal Line */}
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0 mx-10"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0"></div>
 
                 {/* Nodes Grid */}
                 <div className="grid grid-cols-3 gap-8 w-full max-w-[1400px] h-full max-h-[500px] z-10 items-center">

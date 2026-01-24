@@ -3,9 +3,9 @@ import React from 'react';
 const Section = ({ children, className = "", style = {} }) => {
     return (
         <section
-            className={`relative flex flex-col justify-start md:justify-center w-full md:min-w-[100vw] min-h-screen md:h-screen py-20 px-4 md:px-24 md:py-16 border-r border-[var(--border-color)] overflow-hidden md:overflow-visible ${className}`}
+            className={`w-full h-full overflow-hidden ${className}`}
             style={{
-                // Layout handled by classes now
+                position: 'relative',
                 ...style
             }}
         >

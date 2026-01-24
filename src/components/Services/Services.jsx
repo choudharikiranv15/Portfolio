@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// import './Services.scss'; // Removed SCSS dependency
 import { FaCode, FaBrain, FaServer, FaGlobe } from 'react-icons/fa';
 
 const services = [
@@ -32,43 +31,50 @@ const services = [
 
 const Services = () => {
     return (
-        <div className="w-full h-full flex flex-col justify-center">
+        <div
+            className="w-full h-full bg-[#0a0a0a] relative"
+            style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                padding: 'clamp(2rem, 5vw, 5rem)',
+            }}
+        >
             {/* Header */}
-            <div className="mb-10 md:mb-16 pt-10 md:pt-0"> {/* Added pt-10 for mobile extra clearance */}
-                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+            <div className="mb-10 lg:mb-14">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
                     CORE COMPETENCIES
                 </h2>
-                <div className="h-1 w-20 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"></div>
+                <div className="h-1.5 w-20 bg-gradient-to-r from-purple-500 to-blue-500"></div>
             </div>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full pb-10"> {/* Added pb-10 */}
+            {/* Grid - 4 equal cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 w-full">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
-                        className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl flex flex-col justify-between h-auto min-h-[250px] md:min-h-[420px] hover:border-white/30 transition-all group relative overflow-hidden"
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.2 }}
-                        viewport={{ once: true }}
+                        className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 p-6 lg:p-8 rounded-2xl flex flex-col hover:border-white/30 hover:from-white/15 hover:to-white/10 transition-all duration-300 group"
+                        style={{ minHeight: '320px' }}
+                        whileHover={{ y: -8, scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
                     >
-                        {/* Hover Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                        <div className="relative z-10">
-                            <div className="text-4xl md:text-5xl mb-6 text-white/80 group-hover:text-white transition-colors">
+                        <div className="flex-grow">
+                            <div className="text-4xl lg:text-5xl mb-5 text-purple-400 group-hover:text-purple-300 transition-colors">
                                 {service.icon}
                             </div>
-                            <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-tight">
+                            <h3 className="text-xl lg:text-2xl font-bold text-white mb-3 leading-tight">
                                 {service.title}
                             </h3>
-                            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 font-light">
+                            <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
                                 {service.desc}
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap gap-2 relative z-10">
+                        <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/10">
                             {service.tags.map(tag => (
-                                <span key={tag} className="text-[10px] md:text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-gray-400 font-mono uppercase tracking-wider">
+                                <span key={tag} className="text-[10px] lg:text-xs px-3 py-1.5 bg-white/10 rounded-full text-gray-300 font-medium">
                                     {tag}
                                 </span>
                             ))}

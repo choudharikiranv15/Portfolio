@@ -18,24 +18,21 @@ const HorizontalScroll = ({ children }) => {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Initialize Lenis for smooth scrolling
+    // Initialize Lenis for smooth scrolling (desktop only)
     useEffect(() => {
-        // Initialize Lenis
+        // Only initialize Lenis on desktop for horizontal scroll effect
+        if (isMobile) return;
+
         const lenis = new Lenis({
-            autoRaf: true, // Automatically handle requestAnimationFrame
+            autoRaf: true,
             duration: 1.5,
             smoothWheel: true,
-        });
-
-        // Listen for the scroll event and log the event data
-        lenis.on('scroll', (e) => {
-            // console.log(e);
         });
 
         return () => {
             lenis.destroy();
         };
-    }, []);
+    }, [isMobile]);
 
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -49,35 +46,50 @@ const HorizontalScroll = ({ children }) => {
 
     if (isMobile) {
         return (
-            <div className="mobile-layout flex flex-col gap-20 w-full overflow-x-hidden">
+            <div className="mobile-layout flex flex-col w-full overflow-x-hidden overflow-y-auto">
                 {children}
             </div>
         );
     }
 
     return (
-        // The "Ghost" container provides the vertical scrollable height
         <div ref={targetRef} style={{ height: `${sectionCount * 100}vh`, position: 'relative' }}>
             <div
                 style={{
                     position: "sticky",
                     top: 0,
                     height: "100vh",
-                    width: "100vw", // Viewport window
+                    width: "100vw",
                     overflow: "hidden",
-                    display: "flex",
-                    alignItems: "center"
                 }}
             >
-                {/* 
-                   Dynamic width based on section count.
-                */}
                 <motion.div
-                    style={{ x, display: "flex", height: "100vh", width: `${sectionCount * 100}vw` }}
                     ref={containerRef}
+                    style={{
+                        x,
+                        display: "flex",
+                        height: "100vh",
+                        width: `${sectionCount * 100}vw`,
+                    }}
                 >
-                    {/* This renders the sections side-by-side */}
-                    {children}
+                    {React.Children.map(children, (child, index) => (
+                        <div
+                            key={index}
+                            className="section-wrapper"
+                            style={{
+                                width: "100vw",
+                                minWidth: "100vw",
+                                maxWidth: "100vw",
+                                height: "100vh",
+                                flexShrink: 0,
+                                overflow: "hidden",
+                                position: "relative",
+                                clipPath: "inset(0)",
+                            }}
+                        >
+                            {child}
+                        </div>
+                    ))}
                 </motion.div>
             </div>
         </div>
