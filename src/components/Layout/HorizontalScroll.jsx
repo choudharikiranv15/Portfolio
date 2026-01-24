@@ -49,7 +49,7 @@ const HorizontalScroll = ({ children }) => {
 
     if (isMobile) {
         return (
-            <div className="mobile-layout" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="mobile-layout flex flex-col gap-0 w-full overflow-x-hidden">
                 {children}
             </div>
         );

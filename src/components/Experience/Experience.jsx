@@ -99,25 +99,25 @@ const HorizontalNode = ({ item, index }) => {
 
 const MobileNode = ({ item, isLast, index }) => {
     return (
-        <div className="relative flex gap-6 pb-12">
+        <div className="relative flex gap-4 pb-8"> {/* Reduced gap, changed pb */}
             {/* Timeline Line (Vertical) */}
             {!isLast && (
                 <div
-                    className="absolute left-[19px] top-8 bottom-0 w-[1px] bg-white/20 z-0"
+                    className="absolute left-[11px] top-6 bottom-0 w-[1px] bg-white/20 z-0"
                 ></div>
             )}
 
-            {/* Dot */}
+            {/* Dot - Smaller for mobile */}
             <div className="flex-shrink-0 z-10 mt-1">
                 <motion.div
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="w-10 h-10 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center relative shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                    className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center relative shadow-[0_0_10px_rgba(0,0,0,0.5)]"
                     style={{ borderColor: item.color }}
                 >
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }}></div>
                 </motion.div>
             </div>
 
@@ -129,23 +129,23 @@ const MobileNode = ({ item, isLast, index }) => {
                 transition={{ delay: index * 0.1 + 0.1 }}
                 className="flex-grow min-w-0"
             >
-                <div className="bg-[#0a0a0a] border border-white/10 p-5 rounded-xl relative hover:border-white/20 transition-all duration-300 shadow-xl">
+                <div className="bg-[#0a0a0a] border border-white/10 p-4 rounded-lg relative hover:border-white/20 transition-all duration-300 shadow-xl">
                     {/* Role & Org */}
-                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">
+                    <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest block mb-1">
                         {item.type} // {item.period}
                     </span>
-                    <h3 className="text-xl font-bold text-white leading-tight mb-0.5">
+                    <h3 className="text-lg font-bold text-white leading-tight mb-0.5 truncate pr-2">
                         {item.role}
                     </h3>
-                    <h4 className="text-sm font-medium text-gray-400 mb-3">{item.org}</h4>
+                    <h4 className="text-xs font-medium text-gray-400 mb-2 truncate">{item.org}</h4>
 
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-400 text-xs leading-relaxed mb-3 line-clamp-3">
                         {item.desc}
                     </p>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                         {item.tech.map((t, i) => (
-                            <span key={i} className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-400 border border-white/5 font-mono">
+                            <span key={i} className="text-[9px] px-1.5 py-0.5 bg-white/5 rounded text-gray-400 border border-white/5 font-mono">
                                 {t}
                             </span>
                         ))}
@@ -158,14 +158,14 @@ const MobileNode = ({ item, isLast, index }) => {
 
 const Experience = () => {
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden py-20 md:py-0">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden py-10 md:py-0">
 
             {/* Header */}
-            <div className="w-full max-w-[1400px] px-6 md:px-20 mb-12 md:mb-16 z-20 pointer-events-none md:mt-20">
-                <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white select-none">
+            <div className="w-full max-w-[1400px] px-6 md:px-20 mb-8 md:mb-16 z-20 pointer-events-none md:mt-20">
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white select-none">
                     JOURNEY
                 </h2>
-                <div className="h-1 w-20 bg-blue-600 mt-2"></div>
+                <div className="h-1 w-16 md:w-20 bg-blue-600 mt-2"></div>
             </div>
 
             {/* --- Mobile View (Vertical) --- */}
