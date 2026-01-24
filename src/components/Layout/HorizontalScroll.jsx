@@ -6,12 +6,14 @@ import 'lenis/dist/lenis.css'
 const HorizontalScroll = ({ children }) => {
     const targetRef = useRef(null);
     const containerRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true); // Default to mobile for SSR
+    const [isClient, setIsClient] = useState(false);
 
     // Check for mobile device
     useEffect(() => {
+        setIsClient(true);
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024); // Breakpoint for vertical vs horizontal
+            setIsMobile(window.innerWidth < 1024);
         };
         checkMobile();
         window.addEventListener("resize", checkMobile);
@@ -46,8 +48,21 @@ const HorizontalScroll = ({ children }) => {
 
     if (isMobile) {
         return (
-            <div className="mobile-layout flex flex-col w-full overflow-x-hidden overflow-y-auto">
-                {children}
+            <div className="mobile-layout flex flex-col w-full overflow-x-hidden">
+                {React.Children.map(children, (child, index) => (
+                    <div
+                        key={index}
+                        className="mobile-section-wrapper"
+                        style={{
+                            width: "100%",
+                            minHeight: "100svh",
+                            position: "relative",
+                            overflow: "hidden",
+                        }}
+                    >
+                        {child}
+                    </div>
+                ))}
             </div>
         );
     }
