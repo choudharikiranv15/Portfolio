@@ -97,26 +97,97 @@ const HorizontalNode = ({ item, index }) => {
     );
 };
 
+const MobileNode = ({ item, isLast, index }) => {
+    return (
+        <div className="relative flex gap-6 pb-12">
+            {/* Timeline Line (Vertical) */}
+            {!isLast && (
+                <div
+                    className="absolute left-[19px] top-8 bottom-0 w-[1px] bg-white/20 z-0"
+                ></div>
+            )}
+
+            {/* Dot */}
+            <div className="flex-shrink-0 z-10 mt-1">
+                <motion.div
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="w-10 h-10 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center relative shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                    style={{ borderColor: item.color }}
+                >
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
+                </motion.div>
+            </div>
+
+            {/* Content Check */}
+            <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 + 0.1 }}
+                className="flex-grow min-w-0"
+            >
+                <div className="bg-[#0a0a0a] border border-white/10 p-5 rounded-xl relative hover:border-white/20 transition-all duration-300 shadow-xl">
+                    {/* Role & Org */}
+                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">
+                        {item.type} // {item.period}
+                    </span>
+                    <h3 className="text-xl font-bold text-white leading-tight mb-0.5">
+                        {item.role}
+                    </h3>
+                    <h4 className="text-sm font-medium text-gray-400 mb-3">{item.org}</h4>
+
+                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                        {item.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                        {item.tech.map((t, i) => (
+                            <span key={i} className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-400 border border-white/5 font-mono">
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+    )
+}
+
 const Experience = () => {
     return (
-        <div className="w-full h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden py-20 md:py-0">
 
-            {/* Header - Now part of flow to avoid overlaps */}
-            <div className="w-full max-w-[1400px] px-8 md:px-20 mb-8 md:mb-16 z-20 pointer-events-none mt-20">
-                <h2 className="text-6xl md:text-7xl font-black tracking-tighter text-white select-none">
+            {/* Header */}
+            <div className="w-full max-w-[1400px] px-6 md:px-20 mb-12 md:mb-16 z-20 pointer-events-none md:mt-20">
+                <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white select-none">
                     JOURNEY
                 </h2>
                 <div className="h-1 w-20 bg-blue-600 mt-2"></div>
             </div>
 
-            {/* Static Centered Container */}
-            <div className="relative w-full flex-1 flex items-center justify-center px-4 md:px-20">
+            {/* --- Mobile View (Vertical) --- */}
+            <div className="md:hidden w-full max-w-xl px-6 relative z-10">
+                {journeyItems.map((item, index) => (
+                    <MobileNode
+                        key={item.id}
+                        item={item}
+                        index={index}
+                        isLast={index === journeyItems.length - 1}
+                    />
+                ))}
+            </div>
+
+            {/* --- Desktop View (Horizontal) --- */}
+            <div className="hidden md:flex relative w-full flex-1 items-center justify-center px-20">
 
                 {/* Main Horizontal Line */}
                 <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0 mx-10"></div>
 
                 {/* Nodes Grid */}
-                <div className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-[1400px] h-full max-h-[500px] z-10 items-center">
+                <div className="grid grid-cols-3 gap-8 w-full max-w-[1400px] h-full max-h-[500px] z-10 items-center">
                     {journeyItems.map((item, index) => (
                         <div key={item.id} className="h-full flex flex-col justify-center">
                             <HorizontalNode item={item} index={index} />

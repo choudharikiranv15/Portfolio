@@ -30,18 +30,18 @@ const Hero = () => {
 
 
             {/* --- 2. Main Content Grid --- */}
-            <div className="relative z-10 w-full flex-grow flex flex-col md:grid md:grid-cols-12 h-full container mx-auto px-6 md:px-12 py-12 md:py-0">
+            <div className="relative z-10 w-full flex-grow flex flex-col md:grid md:grid-cols-12 h-full container mx-auto px-4 md:px-12 py-4 md:py-0">
 
                 {/* --- Left Column: Intro Info --- */}
                 {/* --- Left Column: Intro Info --- */}
-                <div className="md:col-span-4 flex flex-col justify-center items-start gap-6 order-2 md:order-1 pt-10 md:pt-0 md:pl-24">
+                <div className="md:col-span-4 flex flex-col justify-center items-start gap-4 md:gap-6 order-2 md:order-1 pt-4 md:pt-0 md:pl-24">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h3 className="text-xl font-mono text-gray-400 mb-4">HELLO,</h3>
-                        <p className="text-2xl md:text-3xl font-light leading-snug">
+                        <h3 className="text-lg md:text-xl font-mono text-gray-400 mb-2 md:mb-4">HELLO,</h3>
+                        <p className="text-xl md:text-3xl font-light leading-snug">
                             I build scalable <span className="text-white font-medium">web</span><br />
                             and <span className="text-white font-medium">AI</span> solutions.
                         </p>
@@ -68,7 +68,7 @@ const Hero = () => {
 
 
                 {/* --- Center Column: Avatar --- */}
-                <div className="md:col-span-4 flex items-end justify-center relative order-1 md:order-2 h-[50vh] md:h-screen">
+                <div className="md:col-span-4 flex items-end justify-center relative order-1 md:order-2 h-[35vh] md:h-screen">
 
 
 
@@ -91,16 +91,16 @@ const Hero = () => {
 
 
                 {/* --- Right Column: Profile & Tech --- */}
-                <div className="md:col-span-4 flex flex-col justify-center items-end text-right space-y-8 order-3 pt-4 md:pt-0 md:pr-24">
+                <div className="md:col-span-4 flex flex-col justify-center items-end text-right space-y-4 md:space-y-8 order-3 pt-4 md:pt-0 md:pr-24">
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-2">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-1 md:mb-2">
                             I’M<br />KIRAN
                         </h2>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-500 tracking-tight leading-none">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-500 tracking-tight leading-none">
                             CHOUDHARI
                         </h2>
                     </motion.div>

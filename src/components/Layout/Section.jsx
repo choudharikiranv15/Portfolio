@@ -3,16 +3,9 @@ import React from 'react';
 const Section = ({ children, className = "", style = {} }) => {
     return (
         <section
-            className={className}
+            className={`relative flex flex-col justify-center w-full md:min-w-[100vw] min-h-screen md:h-screen p-6 md:px-24 md:py-16 border-r border-[var(--border-color)] overflow-hidden ${className}`}
             style={{
-                minWidth: "100vw", // Force it to take full screen width in the horizontal strip
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column", // Internal content can stack vertically
-                justifyContent: "center",
-                padding: "4rem 6rem",
-                borderRight: "1px solid var(--border-color)", // Visual separator like Swipewire
-                position: "relative",
+                // Layout handled by classes now
                 ...style
             }}
         >

@@ -41,12 +41,11 @@ const HorizontalScroll = ({ children }) => {
         target: targetRef,
     });
 
+    const sectionCount = React.Children.count(children);
+
     // Transform scrollYProgress (0 -> 1) to x offset.
-    // We map 0 -> 1 vertical progress to 0% -> -75% horizontal translation.
-    // -75% because if we have 4 sections of 100vw each (total 400vw),
-    // shifting by -300vw (75% of 400vw) brings the last section (4th) into full view.
-    // If we shifted -100%, we'd scroll completely off the content.
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+    // Dynamic calculation: shifts by -(N-1)/N * 100 %
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${((sectionCount - 1) / sectionCount) * 100}%`]);
 
     if (isMobile) {
         return (
@@ -58,8 +57,7 @@ const HorizontalScroll = ({ children }) => {
 
     return (
         // The "Ghost" container provides the vertical scrollable height
-        // We set it to 400vh + extra to ensure we have enough track.
-        <div ref={targetRef} style={{ height: "400vh", position: 'relative' }}>
+        <div ref={targetRef} style={{ height: `${sectionCount * 100}vh`, position: 'relative' }}>
             <div
                 style={{
                     position: "sticky",
@@ -72,12 +70,10 @@ const HorizontalScroll = ({ children }) => {
                 }}
             >
                 {/* 
-                   We hardcode specific width for 4 sections for simplicity now. 
-                   Better approach: calculate based on children count. 
-                   4 sections * 100vw = 400vw width.
+                   Dynamic width based on section count.
                 */}
                 <motion.div
-                    style={{ x, display: "flex", height: "100vh", width: "400vw" }}
+                    style={{ x, display: "flex", height: "100vh", width: `${sectionCount * 100}vw` }}
                     ref={containerRef}
                 >
                     {/* This renders the sections side-by-side */}
