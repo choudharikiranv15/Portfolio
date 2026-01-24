@@ -34,7 +34,7 @@ const Services = () => {
     return (
         <div className="w-full h-full flex flex-col justify-center">
             {/* Header */}
-            <div className="mb-10 md:mb-16">
+            <div className="mb-10 md:mb-16 pt-10 md:pt-0"> {/* Added pt-10 for mobile extra clearance */}
                 <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
                     CORE COMPETENCIES
                 </h2>
@@ -42,11 +42,11 @@ const Services = () => {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full pb-10"> {/* Added pb-10 */}
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
-                        className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl flex flex-col justify-between h-auto min-h-[300px] md:min-h-[420px] hover:border-white/30 transition-all group relative overflow-hidden"
+                        className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl flex flex-col justify-between h-auto min-h-[250px] md:min-h-[420px] hover:border-white/30 transition-all group relative overflow-hidden"
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.2 }}
                         viewport={{ once: true }}
