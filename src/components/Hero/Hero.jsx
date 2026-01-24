@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaReact, FaPython } from 'react-icons/fa';
-import { SiPytorch, SiPostgresql, SiFlask, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPython, FaNodeJs, FaBrain } from 'react-icons/fa';
+import { SiPostgresql, SiFastapi } from 'react-icons/si';
 import PortraitImg from '../../assets/hero_avatar_clean.png';
 import './Hero.scss';
 
@@ -51,12 +51,13 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="space-y-2"
                     >
-                        <div className="flex items-center gap-3 text-gray-500 font-mono text-sm">
-                            <FaMapMarkerAlt />
-                            <span>Based in India | Working Globally</span>
-                        </div>
-                        <div className="text-gray-500 font-mono text-sm">
-                            3+ Years Experience
+
+                        <div className="flex items-center gap-4 text-xl text-gray-400 mt-1">
+                            <FaPython title="Python" className="hover:text-blue-400 transition-colors" />
+                            <FaNodeJs title="Node.js" className="hover:text-green-500 transition-colors" />
+                            <FaBrain title="AI / ML" className="hover:text-purple-500 transition-colors" />
+                            <SiPostgresql title="PostgreSQL" className="hover:text-blue-300 transition-colors" />
+                            <SiFastapi title="FastAPI" className="hover:text-teal-400 transition-colors" />
                         </div>
                     </motion.div>
 
@@ -115,40 +116,9 @@ const Hero = () => {
                         </h2>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                        className="flex flex-col items-end gap-1 font-mono"
-                    >
-                        <span className="text-xl text-white font-medium">Full Stack Developer</span>
-                        <span className="text-lg text-gray-400">AI/ML Engineer</span>
-                    </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <p className="text-sm font-mono text-gray-500 mb-2 uppercase tracking-wide">Tech Stack</p>
-                        <div className="flex flex-wrap justify-end gap-2 text-xl text-gray-300">
-                            <FaReact title="React" className="hover:text-[#61DAFB] transition-colors" />
-                            <SiNextdotjs title="Next.js" className="hover:text-white transition-colors" />
-                            <SiTailwindcss title="Tailwind" className="hover:text-[#38B2AC] transition-colors" />
-                            <FaPython title="Python" className="hover:text-[#3776AB] transition-colors" />
-                            <SiPytorch title="PyTorch" className="hover:text-[#EE4C2C] transition-colors" />
-                        </div>
-                    </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 bg-green-900/20 border border-green-800 rounded-full"
-                    >
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        <span className="text-xs font-mono text-green-400 uppercase tracking-wider">Open for Work</span>
-                    </motion.div>
+
                 </div>
 
             </div>
