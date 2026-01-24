@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaReact, FaPython } from 'react-icons/fa';
+import { SiPytorch, SiPostgresql, SiFlask, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import PortraitImg from '../../assets/hero_avatar_clean.png';
 import './Hero.scss';
 
@@ -11,152 +12,165 @@ const Hero = () => {
         offset: ["start start", "end start"]
     });
 
-    // Parallax effects
-    const yAvatar = useTransform(scrollYProgress, [0, 1], [0, 100]);
-    const yText = useTransform(scrollYProgress, [0, 1], [0, -50]);
-    const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-    // Animation variants
-    const slideInLeft = {
-        hidden: { x: -100, opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
-    };
-
-    const slideInRight = {
-        hidden: { x: 100, opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } }
-    };
-
-    const avatarAnim = {
-        hidden: { scale: 0.8, opacity: 0, y: 50 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1.2, ease: "easeOut", delay: 0.2 }
-        }
-    };
+    // Parallax for background text using Framer Motion
+    const yBgText = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
     return (
-        <div ref={containerRef} className="relative w-full h-[120vh] bg-[#050505] overflow-hidden flex flex-col justify-start items-center pt-[15vh] md:pt-0 md:justify-center">
+        <div ref={containerRef} className="relative w-full min-h-screen bg-[#0a0a0a] text-white flex flex-col justify-between overflow-hidden font-sans">
 
-            {/* --- Background Layers --- */}
-
-            {/* Noise Texture */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat"></div>
-
-            {/* Mesh Gradients / Abstract Waves */}
-            <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-gradient-to-br from-gray-800 to-transparent rounded-full blur-[100px] opacity-20 animate-pulse-slow pointer-events-none"></div>
-            <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-gradient-to-tl from-gray-700 to-transparent rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-            <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-white rounded-full blur-[150px] opacity-[0.05] pointer-events-none"></div>
-
-
-            {/* --- Main Content Container --- */}
-            <div className="relative z-10 w-full max-w-[1600px] px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 items-center h-full">
-
-                {/* --- Left Text Section --- */}
-                <motion.div
-                    className="md:col-span-4 flex flex-col items-center md:items-end text-center md:text-right space-y-4 md:space-y-6 order-2 md:order-1 relative z-0"
-                    initial="hidden"
-                    animate="visible"
-                    variants={slideInLeft}
-                    style={{ y: yText, opacity: opacityText }}
-                >
-                    <h3 className="text-xl md:text-2xl font-light tracking-[0.3em] text-gray-400">HELLO,</h3>
-                    <p className="text-gray-500 font-medium text-sm md:text-base max-w-[280px] leading-relaxed">
-                        I craft high-performance digital experiences with a focus on motion and premium aesthetics.
-                    </p>
-                    <div className="h-px w-16 bg-gray-700 mt-4 hidden md:block"></div>
+            {/* --- 1. Background Typography Layer (Behind Avatar) --- */}
+            <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
+                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.03] space-y-0 leading-none">
+                    {/* Massive Background Text */}
+                    <span className="text-[15vw] md:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
+                    <span className="text-[15vw] md:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono ml-[10vw]">ENGINEER</span>
+                    <span className="text-[15vw] md:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono -ml-[10vw]">CREATOR</span>
                 </motion.div>
+            </div>
 
 
-                {/* --- Center Avatar Section --- */}
-                <motion.div
-                    className="md:col-span-4 flex justify-center items-center relative order-1 md:order-2 h-[50vh] md:h-auto my-8 md:my-0"
-                    initial="hidden"
-                    animate="visible"
-                    variants={avatarAnim}
-                    style={{ y: yAvatar }}
-                >
-                    {/* Glow Elements */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-white/5 rounded-full blur-[60px] md:blur-[80px] -z-10"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full -z-10 animate-spin-slow-reverse"></div>
+            {/* --- 2. Main Content Grid --- */}
+            <div className="relative z-10 w-full flex-grow flex flex-col md:grid md:grid-cols-12 h-full container mx-auto px-6 md:px-12 py-12 md:py-0">
 
-                    {/* The Avatar */}
-                    <div className="relative z-10 w-[280px] md:w-[450px] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out group">
-                        {/* Subtle rim light via drop-shadow */}
+                {/* --- Left Column: Intro Info --- */}
+                <div className="md:col-span-4 flex flex-col justify-center items-start space-y-8 order-2 md:order-1 pt-10 md:pt-0">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h3 className="text-xl font-mono text-gray-400 mb-2">HELLO,</h3>
+                        <p className="text-2xl md:text-3xl font-light leading-snug">
+                            I build scalable <span className="text-white font-medium">web</span> and <span className="text-white font-medium">AI</span> solutions.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="space-y-2"
+                    >
+                        <div className="flex items-center gap-3 text-gray-500 font-mono text-sm">
+                            <FaMapMarkerAlt />
+                            <span>Based in India | Working Globally</span>
+                        </div>
+                        <div className="text-gray-500 font-mono text-sm">
+                            3+ Years Experience
+                        </div>
+                    </motion.div>
+
+                    {/* Left Social Links */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="flex flex-col gap-2 font-mono text-sm text-gray-400 mt-4"
+                    >
+                        <a href="https://github.com/kiranchoudhari" className="hover:text-white transition-colors flex items-center gap-2 group">
+                            GITHUB <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                        </a>
+                        <a href="https://linkedin.com/in/kiran-choudhari" className="hover:text-white transition-colors flex items-center gap-2 group">
+                            LINKEDIN <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                        </a>
+                        <a href="mailto:contact@kiranchoudhari.com" className="hover:text-white transition-colors flex items-center gap-2 group">
+                            EMAIL <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                        </a>
+                    </motion.div>
+                </div>
+
+
+                {/* --- Center Column: Avatar --- */}
+                <div className="md:col-span-4 flex items-end justify-center relative order-1 md:order-2 h-[50vh] md:h-screen">
+                    {/* Avatar Image */}
+                    <motion.div
+                        className="relative z-20 w-full h-full flex items-end justify-center"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, ease: 'easeOut' }}
+                    >
                         <img
                             src={PortraitImg}
                             alt="Kiran Choudhari"
-                            className="w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)] mask-image-gradient"
+                            className="w-auto h-full max-h-[85vh] object-contain object-bottom drop-shadow-2xl"
                         />
-
-                        {/* Floating Social Icons (Orbiting/Connected) */}
-                        {/* Defined specifically relative to avatar container */}
-                        <div className="absolute top-[20%] left-[-40px] md:left-[-60px] flex items-center group-hover:-translate-x-2 transition-transform duration-500">
-                            <div className="w-[30px] h-[1px] bg-white/20"></div>
-                            <a href="https://github.com/kiranchoudhari" className="p-3 border border-white/10 rounded-full bg-black/20 backdrop-blur-sm text-gray-400 hover:text-white hover:border-white/50 transition-colors">
-                                <FaGithub size={20} />
-                            </a>
-                        </div>
-
-                        <div className="absolute bottom-[30%] right-[-40px] md:right-[-60px] flex items-center group-hover:translate-x-2 transition-transform duration-500">
-                            <a href="https://linkedin.com/in/kiran-choudhari" className="p-3 border border-white/10 rounded-full bg-black/20 backdrop-blur-sm text-gray-400 hover:text-white hover:border-white/50 transition-colors">
-                                <FaLinkedin size={20} />
-                            </a>
-                            <div className="w-[30px] h-[1px] bg-white/20"></div>
-                        </div>
-
-                        <div className="absolute top-[10%] right-[-20px] md:right-[0px] flex flex-col items-center group-hover:-translate-y-2 transition-transform duration-500 delay-100">
-                            <div className="h-[30px] w-[1px] bg-white/20"></div>
-                            <a href="mailto:contact@kiranchoudhari.com" className="p-3 border border-white/10 rounded-full bg-black/20 backdrop-blur-sm text-gray-400 hover:text-white hover:border-white/50 transition-colors" title="Email Me">
-                                <FaEnvelope size={18} />
-                            </a>
-                        </div>
-
-                    </div>
-                </motion.div>
+                        {/* Gradient Mask at bottom to blend if needed */}
+                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent z-30"></div>
+                    </motion.div>
+                </div>
 
 
-                {/* --- Right Text Section --- */}
-                <motion.div
-                    className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left space-y-2 md:space-y-4 order-3 relative z-0"
-                    initial="hidden"
-                    animate="visible"
-                    variants={slideInRight}
-                    style={{ y: yText, opacity: opacityText }}
-                >
-                    {/* Layered Text Effect: Partially behind avatar if screen is small, but on desktop we align it to side */}
-                    {/* To create the "partially hidden" effect on desktop, we use negative margins to pull text closer to center */}
-
-                    <div className="relative md:-ml-12 lg:-ml-20 z-0">
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tighter opacity-90">
-                            I’M KIRAN
+                {/* --- Right Column: Profile & Tech --- */}
+                <div className="md:col-span-4 flex flex-col justify-center items-end text-right space-y-8 order-3 pt-4 md:pt-0">
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-2">
+                            I’M<br />KIRAN
                         </h2>
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-gray-600 leading-none tracking-tighter">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-500 tracking-tight leading-none">
                             CHOUDHARI
                         </h2>
-                    </div>
+                    </motion.div>
 
-                    <div className="md:pl-4 lg:pl-0 mt-6 md:mt-0">
-                        <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-4 text-xs md:text-sm font-semibold tracking-widest uppercase text-gray-500">
-                            <span className="px-3 py-1 border border-white/10 rounded-full">Full Stack</span>
-                            <span className="px-3 py-1 border border-white/10 rounded-full">AI / ML</span>
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="flex flex-col items-end gap-1 font-mono"
+                    >
+                        <span className="text-xl text-white font-medium">Full Stack Developer</span>
+                        <span className="text-lg text-gray-400">AI/ML Engineer</span>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <p className="text-sm font-mono text-gray-500 mb-2 uppercase tracking-wide">Tech Stack</p>
+                        <div className="flex flex-wrap justify-end gap-2 text-xl text-gray-300">
+                            <FaReact title="React" className="hover:text-[#61DAFB] transition-colors" />
+                            <SiNextdotjs title="Next.js" className="hover:text-white transition-colors" />
+                            <SiTailwindcss title="Tailwind" className="hover:text-[#38B2AC] transition-colors" />
+                            <FaPython title="Python" className="hover:text-[#3776AB] transition-colors" />
+                            <SiPytorch title="PyTorch" className="hover:text-[#EE4C2C] transition-colors" />
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 bg-green-900/20 border border-green-800 rounded-full"
+                    >
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span className="text-xs font-mono text-green-400 uppercase tracking-wider">Open for Work</span>
+                    </motion.div>
+                </div>
 
             </div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5, transition: { delay: 2 } }}
-            >
-                <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white to-transparent"></div>
-                <span className="text-[10px] tracking-[0.2em] text-white/60">SCROLL</span>
-            </motion.div>
+
+            {/* --- 3. Bottom Marquee Strip --- */}
+            <div className="absolute bottom-0 w-full border-t border-white/5 bg-[#0a0a0a]/80 backdrop-blur-sm z-40 overflow-hidden py-3">
+                <div className="flex whitespace-nowrap animate-scroll">
+                    {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="flex gap-12 mx-6 text-xs md:text-sm font-mono tracking-[0.2em] text-gray-600 uppercase">
+                            <span>Portfolio 2026</span>
+                            <span>•</span>
+                            <span>Selected Works</span>
+                            <span>•</span>
+                            <span>Experience</span>
+                            <span>•</span>
+                            <span>Let's Build Something</span>
+                            <span>•</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
         </div>
     );

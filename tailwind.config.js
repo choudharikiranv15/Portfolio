@@ -15,19 +15,20 @@ export default {
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
+                mono: ['Space Grotesk', 'monospace'], // Using Space Grotesk as mono/tech font
             },
             animation: {
                 'fade-in': 'fadeIn 1s ease-out forwards',
-                'float': 'float 6s ease-in-out infinite',
+                'scroll': 'scroll 20s linear infinite',
             },
             keyframes: {
                 fadeIn: {
                     '0%': { opacity: '0', transform: 'translateY(20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
-                float: {
-                    '0%, 100%': { transform: 'translateY(0)' },
-                    '50%': { transform: 'translateY(-20px)' },
+                scroll: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-100%)' },
                 }
             }
         },
