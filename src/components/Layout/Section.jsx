@@ -1,14 +1,8 @@
 import React from 'react';
 
-const Section = ({ children, className = "", style = {} }) => {
+const Section = ({ children, className = "" }) => {
     return (
-        <section
-            className={`w-full h-full overflow-hidden ${className}`}
-            style={{
-                position: 'relative',
-                ...style
-            }}
-        >
+        <section className={`w-full lg:h-full ${className}`}>
             {children}
         </section>
     );

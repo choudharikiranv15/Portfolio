@@ -31,50 +31,35 @@ const services = [
 
 const Services = () => {
     return (
-        <div
-            className="w-full h-full bg-[#0a0a0a] relative"
-            style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                padding: 'clamp(2rem, 5vw, 5rem)',
-            }}
-        >
+        <div className="w-full min-h-screen lg:h-full bg-[#0a0a0a] flex flex-col justify-center p-6 sm:p-8 lg:p-16">
             {/* Header */}
-            <div className="mb-10 lg:mb-14">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+            <div className="mb-8 lg:mb-12">
+                <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-3 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
                     CORE COMPETENCIES
                 </h2>
-                <div className="h-1.5 w-20 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                <div className="h-1 w-16 lg:w-20 bg-purple-500"></div>
             </div>
 
-            {/* Grid - 4 equal cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 w-full">
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
-                        className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 p-6 lg:p-8 rounded-2xl flex flex-col hover:border-white/30 hover:from-white/15 hover:to-white/10 transition-all duration-300 group"
-                        style={{ minHeight: '320px' }}
-                        whileHover={{ y: -8, scale: 1.02 }}
-                        transition={{ duration: 0.3 }}
+                        className="bg-white/5 border border-white/10 p-5 lg:p-6 rounded-xl flex flex-col hover:border-white/30 hover:bg-white/10 transition-all group"
+                        whileHover={{ y: -5 }}
                     >
-                        <div className="flex-grow">
-                            <div className="text-4xl lg:text-5xl mb-5 text-purple-400 group-hover:text-purple-300 transition-colors">
-                                {service.icon}
-                            </div>
-                            <h3 className="text-xl lg:text-2xl font-bold text-white mb-3 leading-tight">
-                                {service.title}
-                            </h3>
-                            <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
-                                {service.desc}
-                            </p>
+                        <div className="text-3xl lg:text-4xl mb-4 text-purple-400 group-hover:text-purple-300 transition-colors">
+                            {service.icon}
                         </div>
-
-                        <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/10">
+                        <h3 className="text-lg lg:text-xl font-bold text-white mb-2">
+                            {service.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
+                            {service.desc}
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
                             {service.tags.map(tag => (
-                                <span key={tag} className="text-[10px] lg:text-xs px-3 py-1.5 bg-white/10 rounded-full text-gray-300 font-medium">
+                                <span key={tag} className="text-[10px] px-2 py-1 bg-white/10 rounded-full text-gray-300">
                                     {tag}
                                 </span>
                             ))}
