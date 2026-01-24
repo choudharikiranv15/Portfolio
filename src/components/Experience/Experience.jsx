@@ -1,149 +1,149 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import './Experience.scss';
+import { motion } from 'framer-motion';
 
-const experiences = [
+const journeyItems = [
     {
         id: 1,
-        role: "Full Stack Developer Intern",
-        company: "Salesence",
-        period: "Jun '25 — Present",
-        location: "Remote",
-        desc: "Architecting high-throughput REST APIs and scraping engines.",
-        color: "#4f46e5"
+        type: 'education',
+        role: "B.E. Computer Science",
+        org: "SPPU",
+        period: "2022 — 2026",
+        desc: "Specialized in AI/ML.",
+        tech: ["DSA", "System Design"],
+        color: "#10b981", // Green
+        position: 'top'
     },
     {
         id: 2,
+        type: 'work',
         role: "AI Intern",
-        company: "Crafttech 360",
+        org: "Crafttech 360",
         period: "Sep '25 — Nov '25",
-        location: "Bengaluru",
-        desc: "Built RAG pipelines and deploying edge AI models.",
-        color: "#ec4899"
+        desc: "Built RAG pipelines & Edge AI models.",
+        tech: ["Python", "TensorFlow"],
+        color: "#db2777", // Pink
+        position: 'bottom'
+    },
+    {
+        id: 3,
+        type: 'work',
+        role: "Full Stack Intern",
+        org: "Salesence",
+        period: "Jun '25 — Present",
+        desc: "High-scale APIs & Scraping Engines.",
+        tech: ["Node.js", "AWS"],
+        color: "#4f46e5", // Indigo
+        position: 'top'
     }
 ];
 
-const TiltCard = ({ children, style }) => {
-    const ref = useRef(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseX = useSpring(x, { stiffness: 300, damping: 30 });
-    const mouseY = useSpring(y, { stiffness: 300, damping: 30 });
-
-    const handleMouseMove = (e) => {
-        const rect = ref.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseXVal = e.clientX - rect.left;
-        const mouseYVal = e.clientY - rect.top;
-        const xPct = mouseXVal / width - 0.5;
-        const yPct = mouseYVal / height - 0.5;
-
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
+const HorizontalNode = ({ item, index }) => {
+    const isTop = item.position === 'top';
 
     return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-                ...style
-            }}
-        >
-            {children}
-        </motion.div>
-    );
-}
+        <div className="relative flex flex-col items-center justify-center min-w-[300px] md:min-w-[400px] h-full">
 
-const Experience = () => {
-    const containerRef = useRef(null);
-
-    // Parallax for background
-    const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
-    const starsX = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
-    return (
-        <div className="w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-20 bg-[#0a0a0a] relative overflow-hidden" ref={containerRef}>
-
-            {/* Background Texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+            {/* The Node Dot on the Line */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, delay: index * 0.2 }}
+                    className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-white relative group cursor-pointer"
+                    style={{ borderColor: item.color }}
+                >
+                    <div className="absolute inset-0 rounded-full animate-ping opacity-30" style={{ backgroundColor: item.color }}></div>
+                </motion.div>
             </div>
 
-            <div className="relative z-10 w-full max-w-[1600px] grid grid-cols-1 md:grid-cols-12 gap-12 text-white">
+            {/* Connecting Line from Dot to Card */}
+            <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: '80px' }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
+                className={`absolute w-[1px] bg-gradient-to-b from-transparent to-white/30 z-0 ${isTop ? 'bottom-1/2 mb-3 bg-gradient-to-t' : 'top-1/2 mt-3'}`}
+            ></motion.div>
 
-                {/* Left: Sticky Header */}
-                <div className="md:col-span-5 flex flex-col justify-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-6">
-                            EXPERIENCE
-                        </h2>
-                        <p className="text-xl text-gray-400 font-light max-w-sm leading-relaxed">
-                            A track record of building high-performance systems and pioneering AI solutions.
-                        </p>
+            {/* Content Card */}
+            <motion.div
+                initial={{ opacity: 0, y: isTop ? 20 : -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
+                className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full px-4`}
+            >
+                <div className="bg-[#111] border border-white/10 p-6 rounded-xl relative hover:border-white/30 transition-colors group">
+                    {/* Decorative Top Border */}
+                    <div className="absolute top-0 left-4 right-4 h-[2px]" style={{ backgroundColor: item.color }}></div>
 
-                        <div className="mt-12 flex gap-4">
-                            <div className="h-1 w-20 bg-blue-500 rounded-full"></div>
-                            <div className="h-1 w-10 bg-gray-700 rounded-full"></div>
-                        </div>
-                    </motion.div>
+                    <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-2">
+                        {item.type} // {item.period}
+                    </span>
+                    <h3 className="text-xl font-bold text-white leading-tight mb-1">
+                        {item.role}
+                    </h3>
+                    <h4 className="text-sm font-medium text-gray-400 mb-3">{item.org}</h4>
+                    <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                        {item.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                        {item.tech.map((t, i) => (
+                            <span key={i} className="text-[10px] px-2 py-1 bg-white/5 rounded text-gray-400 border border-white/5 font-mono">
+                                {t}
+                            </span>
+                        ))}
+                    </div>
                 </div>
+            </motion.div>
 
-                {/* Right: Cards List */}
-                <div className="md:col-span-7 flex flex-col gap-6">
-                    {experiences.map((exp, index) => (
-                        <motion.div
-                            key={exp.id}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="group relative bg-[#111] border border-white/5 hover:border-white/20 p-8 rounded-2xl transition-all duration-300 hover:bg-[#161616]"
-                        >
-                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                                        {exp.role}
-                                    </h3>
-                                    <span className="text-sm font-mono text-gray-500 mt-1 block">
-                                        {exp.company} &nbsp;//&nbsp; {exp.location}
-                                    </span>
-                                </div>
-                                <span className="mt-2 md:mt-0 px-4 py-1 bg-white/5 rounded-full text-xs font-mono text-gray-400 border border-white/5">
-                                    {exp.period}
-                                </span>
-                            </div>
+        </div>
+    );
+};
 
-                            <p className="text-gray-400 font-light leading-relaxed">
-                                {exp.desc}
-                            </p>
+const Experience = () => {
+    return (
+        <div className="w-full h-screen flex flex-col justify-center bg-[#0a0a0a] relative overflow-hidden">
 
-                            {/* Side Accent Line */}
-                            <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </motion.div>
+            {/* Header (Absolute Top Left in the section) */}
+            <div className="absolute top-20 left-10 md:left-20 z-20">
+                <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white opacity-20 select-none">
+                    JOURNEY
+                </h2>
+                <div className="h-1 w-24 bg-white/20 mt-2"></div>
+            </div>
+
+            {/* Horizontal Timeline Track */}
+            <div className="relative w-full flex items-center justify-center px-10 md:px-0">
+
+                {/* Main Horizontal Line */}
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0"></div>
+
+                {/* Glowing Beam (Left to Right) */}
+                <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                    className="absolute top-1/2 left-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent z-0 opacity-50"
+                ></motion.div>
+
+                {/* Nodes Container */}
+                <div className="flex items-center justify-center gap-4 md:gap-12 relative z-10 w-full max-w-6xl">
+                    {journeyItems.map((item, index) => (
+                        <HorizontalNode key={item.id} item={item} index={index} />
                     ))}
                 </div>
 
             </div>
+
+            {/* Background Grid */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
+                style={{
+                    backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+                    backgroundSize: '60px 60px'
+                }}>
+            </div>
+
         </div>
     );
 };
