@@ -41,7 +41,7 @@ const HorizontalNode = ({ item, index }) => {
     const isTop = item.position === 'top';
 
     return (
-        <div className="relative flex flex-col items-center justify-center min-w-[350px] md:min-w-[450px] h-full z-10 px-4">
+        <div className="relative flex flex-col items-center justify-center w-full h-full z-10 px-2 lg:px-4">
 
             {/* The Node Dot on the Line */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
@@ -65,9 +65,9 @@ const HorizontalNode = ({ item, index }) => {
             {/* Content Card - ensured opacity 1 */}
             <motion.div
                 initial={{ opacity: 1, y: 0 }}
-                className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full left-0 right-0 px-4`}
+                className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full left-0 right-0 px-2`}
             >
-                <div className="bg-[#0a0a0a] border border-white/10 p-6 rounded-xl relative hover:border-white/30 transition-all duration-300 shadow-2xl z-20">
+                <div className="bg-[#0a0a0a] border border-white/10 p-5 lg:p-6 rounded-xl relative hover:border-white/30 transition-all duration-300 shadow-2xl z-20">
 
                     {/* Top Color Accent */}
                     <div className="absolute top-0 left-4 right-4 h-[2px]" style={{ backgroundColor: item.color }}></div>
@@ -75,11 +75,11 @@ const HorizontalNode = ({ item, index }) => {
                     <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block mb-1">
                         {item.type} // {item.period}
                     </span>
-                    <h3 className="text-xl font-bold text-white leading-tight mb-1">
+                    <h3 className="text-lg lg:text-xl font-bold text-white leading-tight mb-1 truncate" title={item.role}>
                         {item.role}
                     </h3>
-                    <h4 className="text-sm font-medium text-gray-400 mb-3">{item.org}</h4>
-                    <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                    <h4 className="text-xs lg:text-sm font-medium text-gray-400 mb-3 truncate" title={item.org}>{item.org}</h4>
+                    <p className="text-gray-500 text-xs leading-relaxed mb-4 line-clamp-3">
                         {item.desc}
                     </p>
 
@@ -99,26 +99,28 @@ const HorizontalNode = ({ item, index }) => {
 
 const Experience = () => {
     return (
-        <div className="w-full h-screen flex flex-col justify-center bg-[#0a0a0a] relative overflow-hidden">
+        <div className="w-full h-screen flex flex-col items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
 
-            {/* Header */}
-            <div className="absolute top-20 left-10 md:left-24 z-20 pointer-events-none">
+            {/* Header - Now part of flow to avoid overlaps */}
+            <div className="w-full max-w-[1400px] px-8 md:px-20 mb-8 md:mb-16 z-20 pointer-events-none mt-20">
                 <h2 className="text-6xl md:text-7xl font-black tracking-tighter text-white select-none">
                     JOURNEY
                 </h2>
                 <div className="h-1 w-20 bg-blue-600 mt-2"></div>
             </div>
 
-            {/* Scrollable Container */}
-            <div className="relative w-full h-full flex items-center overflow-x-auto no-scrollbar pt-20">
+            {/* Static Centered Container */}
+            <div className="relative w-full flex-1 flex items-center justify-center px-4 md:px-20">
 
                 {/* Main Horizontal Line */}
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-[200vw] z-0"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 w-full z-0 mx-10"></div>
 
-                {/* Nodes Wrapper */}
-                <div className="flex items-center gap-0 min-w-max px-20 h-[500px]">
+                {/* Nodes Grid */}
+                <div className="grid grid-cols-3 gap-2 md:gap-8 w-full max-w-[1400px] h-full max-h-[500px] z-10 items-center">
                     {journeyItems.map((item, index) => (
-                        <HorizontalNode key={item.id} item={item} index={index} />
+                        <div key={item.id} className="h-full flex flex-col justify-center">
+                            <HorizontalNode item={item} index={index} />
+                        </div>
                     ))}
                 </div>
 
