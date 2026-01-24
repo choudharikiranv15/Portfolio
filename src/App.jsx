@@ -17,7 +17,7 @@ function App() {
       <HorizontalScroll>
 
         {/* Section 1: Introduction */}
-        <Section className="sec-hero">
+        <Section className="sec-hero" style={{ padding: 0, border: 'none' }}>
           <Hero />
         </Section>
 

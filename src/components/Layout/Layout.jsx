@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
     return (
         <ReactLenis root>
             <div className="layout-wrapper" ref={wrapperRef}>
-                <ThreeDBackground />
+                {/* <ThreeDBackground /> */}
 
                 {/* Horizontal Scroll Container */}
                 <div className="horizontal-scroll-container" ref={containerRef}>
