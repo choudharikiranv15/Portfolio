@@ -154,23 +154,7 @@ const Hero = () => {
             </div>
 
 
-            {/* --- 3. Bottom Marquee Strip --- */}
-            <div className="absolute bottom-0 w-full border-t border-white/5 bg-[#0a0a0a]/80 backdrop-blur-sm z-40 overflow-hidden py-3">
-                <div className="flex whitespace-nowrap animate-scroll">
-                    {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="flex gap-12 mx-6 text-xs md:text-sm font-mono tracking-[0.2em] text-gray-600 uppercase">
-                            <span>Portfolio 2026</span>
-                            <span>•</span>
-                            <span>Selected Works</span>
-                            <span>•</span>
-                            <span>Experience</span>
-                            <span>•</span>
-                            <span>Let's Build Something</span>
-                            <span>•</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
+
 
         </div>
     );
