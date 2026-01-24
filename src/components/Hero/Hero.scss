@@ -1,3 +1,5 @@
+/* Hero.scss */
+
 @keyframes pulse-slow {
 
     0%,
@@ -12,13 +14,35 @@
     }
 }
 
-@keyframes spin-slow-reverse {
+@keyframes spin-slow {
     from {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: rotate(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(0deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-slow-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
     }
 }
 
@@ -26,12 +50,47 @@
     animation: pulse-slow 8s ease-in-out infinite;
 }
 
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slower {
+    animation: spin-slow 30s linear infinite;
+}
+
 .animate-spin-slow-reverse {
-    animation: spin-slow-reverse 20s linear infinite;
+    animation: spin-slow-reverse 25s linear infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
 }
 
 /* Mask image for smooth avatar blending at bottom if needed */
 .mask-image-gradient {
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Orbit specific classes */
+.orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    /* Let clicks pass through rings */
+}
+
+.orbit-icon {
+    position: absolute;
+    top: -15px;
+    /* Offset to sit on the ring */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
+    /* Re-enable clicks on icons */
+    cursor: pointer;
 }
