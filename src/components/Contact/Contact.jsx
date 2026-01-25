@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
+
 import './Contact.scss';
 
 const Contact = () => {
@@ -116,13 +119,54 @@ const Contact = () => {
                     </motion.span>
                 </motion.a>
 
+                {/* Social Media Icons */}
+                <div className="social-links">
+                    <motion.a
+                        href="https://github.com/choudharikiranv15"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-icon"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
+                        whileHover={{ y: -5, color: "#000" }}
+                    >
+                        <FaGithub />
+                    </motion.a>
+                    <motion.a
+                        href="https://www.linkedin.com/in/kiran-choudhari-776269259"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-icon"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.3, type: "spring", stiffness: 200 }}
+                        whileHover={{ y: -5, color: "#0077b5" }}
+                    >
+                        <FaLinkedin />
+                    </motion.a>
+                    <motion.a
+                        href="mailto:kiraborkar21@gmail.com"
+                        className="social-icon"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.4, type: "spring", stiffness: 200 }}
+                        whileHover={{ y: -5, color: "#ea4335" }}
+                    >
+                        <SiGmail />
+                    </motion.a>
+                </div>
+
                 {/* Decorative line */}
                 <motion.div
                     className="deco-line"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+                    transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
                 />
             </div>
         </div>
