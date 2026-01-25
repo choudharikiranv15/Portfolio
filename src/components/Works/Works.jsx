@@ -6,14 +6,14 @@ const projects = [
     {
         id: "01",
         name: "DokGuru",
-        cat: "AI Platform / RAG",
+        cat: "AI Platform / Full Stack",
         desc: "Multilingual Document Assistant with sub-second latency.",
         link: "https://dokguru.in/"
     },
     {
         id: "02",
         name: "OpsPilot",
-        cat: "DevOps Intelligence",
+        cat: "DevOps Intelligence / Multi-Agent AI",
         desc: "Autonomous Root Cause Analysis using Multi-Agent AI.",
         link: "https://github.com/choudharikiranv15/opspilot"
     },
