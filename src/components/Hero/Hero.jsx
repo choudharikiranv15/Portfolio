@@ -20,7 +20,7 @@ const Hero = () => {
         >
             {/* Background Text */}
             <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
-                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.06] sm:opacity-[0.05] lg:opacity-[0.03] leading-none">
+                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.07] leading-none">
                     <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
                     <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">ENGINEER</span>
                     <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">CREATOR</span>
