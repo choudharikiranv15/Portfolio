@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedHeading from '../Layout/AnimatedHeading';
 import { motion } from 'framer-motion';
 
 const journeyItems = [
@@ -121,9 +122,10 @@ const Experience = () => {
         <div className="w-full min-h-screen lg:h-full bg-[#0a0a0a] flex flex-col justify-center p-6 sm:p-8 lg:p-16">
             {/* Header */}
             <div className="mb-8 lg:mb-16">
-                <h2 className="text-3xl sm:text-4xl lg:text-7xl font-black tracking-tighter text-white">
-                    JOURNEY
-                </h2>
+                <AnimatedHeading
+                    text="JOURNEY"
+                    className="text-3xl sm:text-4xl lg:text-7xl font-black tracking-tighter text-white"
+                />
                 <div className="h-1 w-16 lg:w-20 bg-blue-600 mt-2"></div>
             </div>
 

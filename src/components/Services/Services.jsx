@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Services.scss';
 import { FaCode, FaBrain, FaServer, FaGlobe } from 'react-icons/fa';
+import AnimatedHeading from '../Layout/AnimatedHeading';
 
 const services = [
     {
@@ -34,8 +35,11 @@ const Services = () => {
     return (
         <div className="services-container">
             <div className="services-header">
-                <h2>CORE COMPETENCIES</h2>
-                <div className="line"></div>
+                <AnimatedHeading
+                    text="CORE COMPETENCIES"
+                    className="text-3xl sm:text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-3 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent"
+                />
+                <div className="h-1 w-16 lg:w-20 bg-purple-500"></div>
             </div>
 
             <div className="services-grid">

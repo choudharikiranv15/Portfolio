@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Freelance.scss';
+import AnimatedHeading from '../Layout/AnimatedHeading';
 import { FaBrain, FaServer, FaCode, FaRocket } from 'react-icons/fa';
 
 const freelanceServices = [
@@ -60,7 +61,7 @@ const Freelance = () => {
     return (
         <div className="freelance-container">
             <div className="freelance-header">
-                <h2>FREELANCE</h2>
+                <AnimatedHeading text="FREELANCE" />
                 <div className="availability">
                     <span className="dot"></span>
                     <span>Available for Work</span>

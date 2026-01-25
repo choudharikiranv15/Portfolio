@@ -1,5 +1,6 @@
 import React from 'react';
 import './Works.scss';
+import AnimatedHeading from '../Layout/AnimatedHeading';
 import { motion } from 'framer-motion';
 
 const projects = [
@@ -37,7 +38,7 @@ const Works = () => {
     return (
         <div className="works-container">
             <div className="works-header">
-                <h2>SELECTED WORKS</h2>
+                <AnimatedHeading text="PERSONAL PROJECTS" />
                 <span className="subtitle">From Multi-Agent Systems to Scalable SaaS</span>
             </div>
 
