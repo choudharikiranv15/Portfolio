@@ -3,18 +3,21 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 1.5rem;
+    justify-content: flex-start;
+    padding: 2rem 1.5rem;
     background: #0a0a0a;
+    overflow-y: auto;
 
     @media (min-width: 640px) {
-        padding: 2rem;
+        padding: 2.5rem 2rem;
+        justify-content: center;
     }
 
     @media (min-width: 1024px) {
         height: 100%;
         min-height: unset;
         padding: 0 5%;
+        justify-content: center;
     }
 
     .freelance-header {
@@ -28,57 +31,54 @@
             margin-bottom: 2.5rem;
         }
 
-        .header-top {
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+
+            @media (min-width: 640px) {
+                font-size: 2.25rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 3rem;
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        .availability {
             display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
             margin-bottom: 0.75rem;
 
             @media (min-width: 640px) {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
+                font-size: 0.85rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 0.9rem;
                 margin-bottom: 1rem;
             }
 
-            h2 {
-                font-size: 1.875rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: -0.02em;
-                background: linear-gradient(to right, #fff, #888);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-
-                @media (min-width: 640px) {
-                    font-size: 2.25rem;
-                }
-
-                @media (min-width: 1024px) {
-                    font-size: 3rem;
-                }
-            }
-
-            .availability {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                font-size: 0.75rem;
-                color: #fff;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-
-                @media (min-width: 1024px) {
-                    font-size: 0.875rem;
-                }
-
-                .dot {
-                    width: 8px;
-                    height: 8px;
-                    background: #fff;
-                    border-radius: 50%;
-                    animation: pulse 2s infinite;
-                }
+            .dot {
+                width: 10px;
+                height: 10px;
+                background: #fff;
+                border-radius: 50%;
+                animation: pulse 2s infinite;
+                flex-shrink: 0;
             }
         }
 

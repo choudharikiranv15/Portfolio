@@ -57,12 +57,10 @@ const Freelance = () => {
     return (
         <div className="freelance-container">
             <div className="freelance-header">
-                <div className="header-top">
-                    <h2>FREELANCE</h2>
-                    <span className="availability">
-                        <span className="dot"></span>
-                        Available for Work
-                    </span>
+                <h2>FREELANCE</h2>
+                <div className="availability">
+                    <span className="dot"></span>
+                    <span>Available for Work</span>
                 </div>
                 <div className="line"></div>
             </div>
