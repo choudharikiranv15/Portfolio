@@ -18,6 +18,15 @@ const Hero = () => {
             ref={containerRef}
             className="w-full min-h-screen lg:h-full bg-[#0a0a0a] text-white overflow-hidden"
         >
+            {/* Live Status Indicator */}
+            <div className="absolute top-6 right-6 z-20 flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Open to Work</span>
+            </div>
+
             {/* Background Text */}
             <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
                 <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.07] leading-none">
