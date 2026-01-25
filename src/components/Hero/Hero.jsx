@@ -60,6 +60,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
+                    <h3 className="text-lg font-mono text-gray-400 mb-2">HELLO,</h3>
                     <p className="text-base sm:text-lg font-light mb-3 sm:mb-4">
                         I build scalable <span className="font-medium">web</span> and <span className="font-medium">AI</span> solutions.
                     </p>
@@ -77,7 +78,6 @@ const Hero = () => {
             <div className="hidden lg:grid grid-cols-12 h-full px-12 relative z-10">
                 <div className="col-span-4 flex flex-col justify-center items-start gap-6 pl-12">
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                        <h3 className="text-xl font-mono text-gray-400 mb-4">HELLO,</h3>
                         <p className="text-3xl font-light leading-snug">
                             I build scalable <span className="font-medium">web</span><br />
                             and <span className="font-medium">AI</span> solutions.
