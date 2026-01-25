@@ -33,7 +33,8 @@ const freelanceProjects = [
         type: "Full Stack Platform",
         desc: "Developed a complete e-commerce solution with admin dashboard.",
         tech: ["Tailwind CSS", "Supabase", "Vercel"],
-        status: "Completed"
+        status: "Completed",
+        link: "https://mahalingeshwardigitalprints.netlify.app/"
     },
     {
         id: "02",
@@ -41,7 +42,8 @@ const freelanceProjects = [
         type: "Full Stack Platform",
         desc: "Developed a complete e-commerce solution with admin dashboard.",
         tech: ["React", "Node.js", "MongoDB"],
-        status: "Completed"
+        status: "Completed",
+        link: "https://shopease-cyan.vercel.app/"
     },
     {
         id: "03",
@@ -49,7 +51,8 @@ const freelanceProjects = [
         type: "Backend Architecture",
         desc: "Designed and implemented scalable microservices architecture.",
         tech: ["Node.js", "PostgreSQL", "Redis"],
-        status: "Completed"
+        status: "Completed",
+        link: "https://gosalesence.com"
     }
 ];
 
@@ -89,8 +92,11 @@ const Freelance = () => {
                     <h3 className="section-title">Recent Projects</h3>
                     <div className="projects-list">
                         {freelanceProjects.map((project) => (
-                            <motion.div
+                            <motion.a
                                 key={project.id}
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="project-card"
                                 whileHover={{ x: 5 }}
                             >
@@ -107,7 +113,7 @@ const Freelance = () => {
                                         ))}
                                     </div>
                                 </div>
-                            </motion.div>
+                            </motion.a>
                         ))}
                     </div>
                 </div>
