@@ -6,6 +6,7 @@ import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
 import Experience from './components/Experience/Experience';
 import Works from './components/Works/Works';
+import Freelance from './components/Freelance/Freelance';
 
 import './App.scss';
 
@@ -28,6 +29,10 @@ function App() {
 
         <Section className="sec-works">
           <Works />
+        </Section>
+
+        <Section className="sec-freelance">
+          <Freelance />
         </Section>
 
         <Section className="sec-contact">
