@@ -19,38 +19,39 @@ const Hero = () => {
             className="w-full min-h-screen lg:h-full bg-[#0a0a0a] text-white overflow-hidden"
         >
             {/* Background Text */}
-            <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none">
-                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.03] leading-none">
-                    <span className="text-[15vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
-                    <span className="text-[15vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">ENGINEER</span>
-                    <span className="text-[15vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">CREATOR</span>
+            <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
+                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.06] sm:opacity-[0.05] lg:opacity-[0.03] leading-none">
+                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
+                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">ENGINEER</span>
+                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">CREATOR</span>
                 </motion.div>
             </div>
 
             {/* Mobile Layout */}
-            <div className="lg:hidden relative z-10 flex flex-col items-center justify-between min-h-screen px-6 py-12">
+            <div className="lg:hidden relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8 sm:py-12 gap-6 sm:gap-8">
                 <motion.div
                     className="text-center"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
-                    <h2 className="text-4xl sm:text-5xl font-black tracking-tighter leading-none">
+                    <h3 className="text-sm sm:text-base font-mono text-gray-400 mb-2">HELLO,</h3>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter leading-none">
                         I'M KIRAN
                     </h2>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-500 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-500 tracking-tight mt-1">
                         CHOUDHARI
                     </h3>
                 </motion.div>
 
                 <motion.div
-                    className="flex-1 flex items-center justify-center py-8"
+                    className="flex items-center justify-center"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
                     <img
                         src={PortraitImg}
                         alt="Kiran Choudhari"
-                        className="w-auto max-h-[45vh] object-contain drop-shadow-2xl"
+                        className="w-auto max-h-[40vh] sm:max-h-[45vh] md:max-h-[50vh] object-contain drop-shadow-2xl"
                     />
                 </motion.div>
 
@@ -59,10 +60,10 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
-                    <p className="text-lg font-light mb-4">
+                    <p className="text-base sm:text-lg font-light mb-3 sm:mb-4">
                         I build scalable <span className="font-medium">web</span> and <span className="font-medium">AI</span> solutions.
                     </p>
-                    <div className="flex items-center justify-center gap-5 text-xl text-gray-400">
+                    <div className="flex items-center justify-center gap-4 sm:gap-5 text-lg sm:text-xl text-gray-400">
                         <FaPython className="hover:text-blue-400 transition-colors" />
                         <FaNodeJs className="hover:text-green-500 transition-colors" />
                         <FaBrain className="hover:text-purple-500 transition-colors" />
