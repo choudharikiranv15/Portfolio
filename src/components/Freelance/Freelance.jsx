@@ -29,10 +29,10 @@ const freelanceServices = [
 const freelanceProjects = [
     {
         id: "01",
-        client: "Tech Startup",
-        type: "AI Chatbot",
-        desc: "Built a customer support chatbot with RAG capabilities.",
-        tech: ["Python", "LangChain", "FastAPI"],
+        client: "Business Website",
+        type: "Full Stack Platform",
+        desc: "Developed a complete e-commerce solution with admin dashboard.",
+        tech: ["Tailwind CSS", "Supabase", "Vercel"],
         status: "Completed"
     },
     {
