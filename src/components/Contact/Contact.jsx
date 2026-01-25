@@ -99,25 +99,7 @@ const Contact = () => {
                 </motion.p>
 
                 {/* CTA Button */}
-                <motion.a
-                    href="mailto:kiraborkar21@gmail.com"
-                    className="cta-button"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 1, duration: 0.5 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                >
-                    <span className="btn-text">Get in Touch</span>
-                    <motion.span
-                        className="btn-arrow"
-                        initial={{ x: 0 }}
-                        whileHover={{ x: 5 }}
-                    >
-                        →
-                    </motion.span>
-                </motion.a>
+
 
                 {/* Social Media Icons */}
                 <div className="social-links">
