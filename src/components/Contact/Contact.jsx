@@ -135,7 +135,7 @@ const Contact = () => {
                         <FaGithub />
                     </motion.a>
                     <motion.a
-                        href="https://www.linkedin.com/in/kiran-choudhari-776269259"
+                        href="https://www.linkedin.com/in/kiranchoudhari-1510m/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-icon"
@@ -148,7 +148,7 @@ const Contact = () => {
                         <FaLinkedin />
                     </motion.a>
                     <motion.a
-                        href="mailto:kiraborkar21@gmail.com"
+                        href="mailto:choudharikiranv2003@gmail.com"
                         className="social-icon"
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
