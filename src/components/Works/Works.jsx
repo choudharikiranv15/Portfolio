@@ -8,24 +8,28 @@ const projects = [
         name: "DokGuru",
         cat: "AI Platform / RAG",
         desc: "Multilingual Document Assistant with sub-second latency.",
+        link: "https://dokguru.in/"
     },
     {
         id: "02",
         name: "OpsPilot",
         cat: "DevOps Intelligence",
         desc: "Autonomous Root Cause Analysis using Multi-Agent AI.",
+        link: "https://github.com/choudharikiranv15/opspilot"
     },
     {
         id: "03",
         name: "ShopEase",
         cat: "E-Commerce / Full Stack",
         desc: "Secure platform with RBAC, OTP Auth, and Seller Dashboard.",
+        link: "https://shopease-cyan.vercel.app/"
     },
     {
         id: "04",
         name: "Salesence",
         cat: "SaaS / Backend",
         desc: "High-scale scraping & analytics architecture.",
+        link: "https://gosalesence.com"
     }
 ];
 
@@ -39,8 +43,11 @@ const Works = () => {
 
             <div className="projects-list">
                 {projects.map((p) => (
-                    <motion.div
+                    <motion.a
                         key={p.id}
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="project-item"
                         whileHover={{ scale: 1.02 }}
                     >
@@ -53,7 +60,7 @@ const Works = () => {
                             <span className="category">{p.cat}</span>
                             <p className="description">{p.desc}</p>
                         </div>
-                    </motion.div>
+                    </motion.a>
                 ))}
             </div>
         </div>
