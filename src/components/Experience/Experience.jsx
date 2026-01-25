@@ -39,7 +39,7 @@ const journeyItems = [
 ];
 
 const MobileNode = ({ item, isLast, index }) => (
-    <div className="relative flex gap-4 pb-6">
+    <div className="relative flex gap-4 pb-12">
         {!isLast && (
             <div className="absolute left-[11px] top-6 bottom-0 w-[1px] bg-white/20"></div>
         )}
@@ -60,16 +60,21 @@ const MobileNode = ({ item, isLast, index }) => (
             viewport={{ once: true }}
             className="flex-grow"
         >
-            <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
-                <span className="text-[9px] text-gray-500 uppercase tracking-widest">
-                    {item.type} // {item.period}
-                </span>
-                <h3 className="text-base font-bold text-white mt-1">{item.role}</h3>
-                <h4 className="text-xs text-gray-400 mb-2">{item.org}</h4>
-                <p className="text-gray-400 text-xs leading-relaxed mb-3">{item.desc}</p>
-                <div className="flex flex-wrap gap-1.5">
+            <div className="pl-4 pt-0.5 w-full">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                    <h3 className="text-xl font-bold text-white leading-tight">{item.role}</h3>
+                    <span className="text-[11px] font-bold tracking-widest uppercase mt-1 sm:mt-0" style={{ color: item.color }}>
+                        {item.period}
+                    </span>
+                </div>
+
+                <h4 className="text-sm font-medium text-white/60 mb-3 font-mono uppercase tracking-wide">{item.org}</h4>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-prose">{item.desc}</p>
+
+                <div className="flex flex-wrap gap-x-3 gap-y-2 text-[11px] font-mono text-gray-500 uppercase">
                     {item.tech.map((t, i) => (
-                        <span key={i} className="text-[9px] px-1.5 py-0.5 bg-white/5 rounded text-gray-400">
+                        <span key={i} className="flex items-center">
+                            <span className="w-1.5 h-1.5 rounded-full mr-1.5 opacity-50" style={{ backgroundColor: item.color }}></span>
                             {t}
                         </span>
                     ))}
@@ -121,13 +126,16 @@ const Experience = () => {
     return (
         <div className="w-full min-h-screen lg:h-full bg-[#0a0a0a] flex flex-col justify-center p-6 sm:p-8 lg:p-16">
             {/* Header */}
-            <div className="mb-8 lg:mb-16">
+            <div className="lg:mb-16">
                 <AnimatedHeading
                     text="JOURNEY"
                     className="text-3xl sm:text-4xl lg:text-7xl font-black tracking-tighter text-white"
                 />
                 <div className="h-1 w-16 lg:w-20 bg-blue-600 mt-2"></div>
             </div>
+
+            {/* Mobile Spacer */}
+            <div className="h-[50px] lg:hidden"></div>
 
             {/* Mobile Timeline */}
             <div className="lg:hidden">
