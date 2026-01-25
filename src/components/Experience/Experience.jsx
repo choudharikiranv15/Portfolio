@@ -5,11 +5,11 @@ const journeyItems = [
     {
         id: 1,
         type: 'education',
-        role: "B.E. Computer Science",
-        org: "Savitribai Phule Pune University",
-        period: "2022 — 2026",
-        desc: "Specialized in Artificial Intelligence & Machine Learning. Active member of the coding club.",
-        tech: ["DSA", "System Design", "AI/ML"],
+        role: "B.E. AI & ML",
+        org: "MVJ College of Engineering Bengaluru",
+        period: "2021 — 2025",
+        desc: "Specialized in Artificial Intelligence & Machine Learning.  Chief Cordinator of VertechX 2024(Tech Fest).",
+        tech: ["Full Stack", "AI/ML", "Leadership"],
         color: "#10b981",
         position: 'top'
     },
@@ -20,7 +20,7 @@ const journeyItems = [
         org: "Crafttech 360",
         period: "Sep '25 — Nov '25",
         desc: "Built RAG pipelines and deployed optimized Edge AI models for real-time inference.",
-        tech: ["Python", "TensorFlow", "RAG"],
+        tech: ["Python", "CI/CD", "RAG"],
         color: "#db2777",
         position: 'bottom'
     },
@@ -31,7 +31,7 @@ const journeyItems = [
         org: "Salesence",
         period: "Jun '25 — Present",
         desc: "Architecting high-throughput REST APIs and scraping engines for scalable data solutions.",
-        tech: ["Node.js", "React", "AWS"],
+        tech: ["Node.js", "React", "BullMQ"],
         color: "#4f46e5",
         position: 'top'
     }
