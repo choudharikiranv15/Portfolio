@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Section = ({ children, className = "" }) => {
+const Section = ({ children, className = "", id = "" }) => {
     return (
-        <section className={`w-full min-h-screen lg:min-h-0 lg:h-full relative overflow-hidden ${className}`}>
+        <section id={id} className={`w-full min-h-screen lg:min-h-0 lg:h-full relative overflow-hidden ${className}`}>
             {children}
         </section>
     );

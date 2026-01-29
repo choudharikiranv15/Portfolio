@@ -5,7 +5,14 @@
     flex-direction: column;
     justify-content: center;
     padding: 1.5rem;
-    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 1023px) {
+        height: auto;
+        min-height: 100svh;
+        overflow-y: auto;
+    }
 
     @media (min-width: 640px) {
         padding: 2rem;
@@ -15,9 +22,43 @@
         height: 100%;
         min-height: unset;
         padding: 0 5%;
+        overflow: hidden;
+    }
+
+    .services-bg-elements {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        .orb-1 {
+            top: -10%;
+            right: -5%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(120, 20, 100, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        .orb-2 {
+            bottom: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(20, 40, 120, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+        }
     }
 
     .services-header {
+        position: relative;
+        z-index: 2;
         margin-bottom: 2rem;
 
         @media (min-width: 640px) {
@@ -63,10 +104,13 @@
     }
 
     .services-grid {
+        position: relative;
+        z-index: 2;
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.25rem;
         width: 100%;
+        padding-bottom: 2rem;
 
         @media (min-width: 640px) {
             grid-template-columns: repeat(2, 1fr);
@@ -76,12 +120,16 @@
         @media (min-width: 1024px) {
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
+            padding-bottom: 0;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            background: rgba(40, 40, 40, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
@@ -90,7 +138,9 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
 
             @media (min-width: 640px) {
                 padding: 2rem;
@@ -101,7 +151,7 @@
                 padding: 3rem 2rem;
                 height: 420px;
                 min-height: unset;
-                border-radius: 0;
+                border-radius: 12px;
             }
 
             /* Subtle gradient overlay */
@@ -112,7 +162,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 100%);
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
                 pointer-events: none;
             }
 

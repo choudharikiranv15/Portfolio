@@ -11,32 +11,34 @@ import Contact from './components/Contact/Contact';
 
 import './App.scss';
 
+import FloatingDock from './components/Layout/FloatingDock';
+
 function App() {
   return (
     <div className="App">
       <HorizontalScroll>
 
-        <Section className="sec-hero">
+        <Section id="hero" className="sec-hero">
           <Hero />
         </Section>
 
-        <Section className="sec-services">
+        <Section id="services" className="sec-services">
           <Services />
         </Section>
 
-        <Section className="sec-experience">
+        <Section id="experience" className="sec-experience">
           <Experience />
         </Section>
 
-        <Section className="sec-works">
+        <Section id="works" className="sec-works">
           <Works />
         </Section>
 
-        <Section className="sec-freelance">
+        <Section id="freelance" className="sec-freelance">
           <Freelance />
         </Section>
 
-        <Section className="sec-contact">
+        <Section id="contact" className="sec-contact">
           <Contact />
         </Section>
 

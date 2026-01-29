@@ -39,6 +39,37 @@ const services = [
 const Services = () => {
     return (
         <div className="services-container">
+            <div className="services-bg-elements">
+                <motion.div
+                    className="gradient-orb orb-1"
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                        x: [0, 50, 0],
+                        y: [0, -30, 0]
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div
+                    className="gradient-orb orb-2"
+                    animate={{
+                        scale: [1.2, 1, 1.2],
+                        opacity: [0.3, 0.5, 0.3],
+                        x: [0, -50, 0],
+                        y: [0, 30, 0]
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+            </div>
+
             <div className="services-header">
                 <AnimatedHeading
                     text="CORE COMPETENCIES"
