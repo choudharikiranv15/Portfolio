@@ -29,10 +29,10 @@ const Hero = () => {
 
             {/* Background Text */}
             <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
-                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.07] leading-none">
-                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
-                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">ENGINEER</span>
-                    <span className="text-[12vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">CREATOR</span>
+                <motion.div style={{ y: yBgText }} className="flex flex-col items-center opacity-[0.1] leading-none">
+                    <span className="text-[18vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">DEVELOPER</span>
+                    <span className="text-[18vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">ENGINEER</span>
+                    <span className="text-[18vw] sm:text-[14vw] lg:text-[12vw] font-black tracking-tighter whitespace-nowrap font-mono">CREATOR</span>
                 </motion.div>
             </div>
 
@@ -69,7 +69,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
-                    <h3 className="text-lg font-mono text-gray-400 mb-2">HELLO,</h3>
+
                     <p className="text-base sm:text-lg font-light mb-3 sm:mb-4">
                         I build scalable <span className="font-medium">web</span> and <span className="font-medium">AI</span> solutions.
                     </p>
