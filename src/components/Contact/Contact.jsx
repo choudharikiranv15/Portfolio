@@ -12,7 +12,7 @@ const Contact = () => {
     const line3 = "Together";
 
     const letterVariants = {
-        hidden: { y: 100, opacity: 0 },
+        hidden: { y: '100%', opacity: 0 },
         visible: (i) => ({
             y: 0,
             opacity: 1,
