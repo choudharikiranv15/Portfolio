@@ -25,36 +25,7 @@
         overflow: hidden;
     }
 
-    .services-bg-elements {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
 
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-        }
-
-        .orb-1 {
-            top: -10%;
-            right: -5%;
-            width: 45vw;
-            height: 45vw;
-            background: radial-gradient(circle, rgba(120, 20, 100, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-        }
-
-        .orb-2 {
-            bottom: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(20, 40, 120, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-        }
-    }
 
     .services-header {
         position: relative;

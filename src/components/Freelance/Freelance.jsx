@@ -60,6 +60,8 @@ const freelanceProjects = [
 const Freelance = () => {
     return (
         <div className="freelance-container">
+
+
             <div className="freelance-header">
                 <AnimatedHeading text="FREELANCE" />
                 <div className="availability">

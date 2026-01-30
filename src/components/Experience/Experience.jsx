@@ -124,7 +124,7 @@ const HorizontalNode = ({ item }) => {
 
 const Experience = () => {
     return (
-        <div className="w-full min-h-screen lg:h-full bg-[#0a0a0a] flex flex-col justify-center p-6 sm:p-8 lg:p-16">
+        <div className="w-full min-h-screen lg:h-full bg-[#0a0a0a] flex flex-col justify-center p-6 sm:p-8 lg:p-16 overflow-y-auto lg:overflow-visible">
             {/* Header */}
             <div className="lg:mb-16">
                 <AnimatedHeading
@@ -146,7 +146,13 @@ const Experience = () => {
 
             {/* Desktop Timeline */}
             <div className="hidden lg:flex relative flex-1 items-center justify-center">
-                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10"></div>
+                <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-white/10 overflow-hidden">
+                    <motion.div
+                        className="absolute top-0 right-full w-40 h-full bg-gradient-to-r from-transparent via-white to-transparent"
+                        animate={{ x: "250%" }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    />
+                </div>
                 <div className="grid grid-cols-3 gap-8 w-full max-w-[1200px] h-[400px]">
                     {journeyItems.map((item) => (
                         <HorizontalNode key={item.id} item={item} />
