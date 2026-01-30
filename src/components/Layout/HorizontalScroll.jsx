@@ -24,7 +24,22 @@ const HorizontalScroll = ({ children }) => {
             duration: 1.5,
             smoothWheel: true,
         });
-        return () => lenis.destroy();
+
+        const handleKeyDown = (e) => {
+            const viewportHeight = window.innerHeight;
+            if (e.key === "ArrowRight") {
+                lenis.scrollTo(lenis.scroll + viewportHeight, { duration: 1.5 });
+            } else if (e.key === "ArrowLeft") {
+                lenis.scrollTo(lenis.scroll - viewportHeight, { duration: 1.5 });
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            lenis.destroy();
+            window.removeEventListener("keydown", handleKeyDown);
+        };
     }, [isMobile]);
 
     const { scrollYProgress } = useScroll({ target: targetRef });

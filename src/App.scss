@@ -5,3 +5,38 @@
   padding: 0;
   text-align: left;
 }
+
+/* Global Noise Overlay & Vignette */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Noise Pattern */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+
+  /* Vignette */
+  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+
+/* Backup Noise if SVG fails or for better texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAB4YcPTAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAAA5JREFUeNo1yoERACAIAzB//y0X0O4cM810gZ6y77W9/b1L5wP82QO8KQAAAABJRU5ErkJggg==");
+  background-repeat: repeat;
+}

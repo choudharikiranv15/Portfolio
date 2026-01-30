@@ -101,20 +101,29 @@ const HorizontalNode = ({ item }) => {
             </div>
             <div className={`absolute w-[1px] bg-white/20 ${isTop ? 'bottom-1/2 mb-2' : 'top-1/2 mt-2'}`} style={{ height: '60px' }}></div>
             <div className={`absolute ${isTop ? 'bottom-[calc(50%+60px)]' : 'top-[calc(50%+60px)]'} w-full px-2`}>
-                <div className="bg-white/5 border border-white/10 p-4 rounded-xl hover:border-white/30 transition-all">
-                    <div className="absolute top-0 left-4 right-4 h-[2px]" style={{ backgroundColor: item.color }}></div>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-widest">
-                        {item.type} // {item.period}
-                    </span>
-                    <h3 className="text-lg font-bold text-white mt-1">{item.role}</h3>
-                    <h4 className="text-sm text-gray-400 mb-2">{item.org}</h4>
-                    <p className="text-gray-500 text-xs leading-relaxed mb-3">{item.desc}</p>
-                    <div className="flex flex-wrap gap-2">
-                        {item.tech.map((t, i) => (
-                            <span key={i} className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-500">
-                                {t}
+                <div className="bg-white/5 border border-white/10 rounded-2xl hover:border-white/30 transition-all relative overflow-hidden group">
+                    {/* Top Decorative Line */}
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-white/10"></div>
+                    <div className="absolute top-0 left-16 right-16 h-[2px]" style={{ backgroundColor: item.color }}></div>
+
+                    {/* Content Container - Maximum safety padding */}
+                    <div className="flex flex-col h-full justify-between px-12 pt-24 pb-24">
+                        <div>
+                            <span className="text-[11px] text-gray-500 uppercase tracking-widest font-semibold block mb-3">
+                                {item.type} // {item.period}
                             </span>
-                        ))}
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-100 transition-colors">{item.role}</h3>
+                            <h4 className="text-sm text-gray-400 mb-4 font-medium">{item.org}</h4>
+                            <p className="text-gray-400/80 text-xs leading-relaxed mb-6">{item.desc}</p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                            {item.tech.map((t, i) => (
+                                <span key={i} className="text-[10px] px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-gray-400 font-medium whitespace-nowrap">
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
