@@ -1,4 +1,6 @@
 import React from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 import HorizontalScroll from './components/Layout/HorizontalScroll';
 import Section from './components/Layout/Section';
 
@@ -16,6 +18,8 @@ import FloatingDock from './components/Layout/FloatingDock';
 function App() {
   return (
     <div className="App">
+      <SpeedInsights />
+      <Analytics />
       <HorizontalScroll>
 
         <Section id="hero" className="sec-hero">
