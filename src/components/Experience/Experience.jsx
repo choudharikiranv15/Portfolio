@@ -30,11 +30,22 @@ const journeyItems = [
         type: 'work',
         role: "Full Stack Intern",
         org: "Salesence",
-        period: "Jun '25 — Present",
+        period: "Jun '25 — Jan '26",
         desc: "Architecting high-throughput REST APIs and scraping engines for scalable data solutions.",
         tech: ["Node.js", "React", "BullMQ"],
         color: "#4f46e5",
         position: 'top'
+    },
+    {
+        id: 4,
+        type: 'work',
+        role: "Trainee System Engineer",
+        org: "Stratogent",
+        period: "Feb '26 — Present",
+        desc: "Kickstarting my full-time career, working on enterprise-grade systems and infrastructure solutions.",
+        tech: ["Systems", "Infrastructure", "Engineering"],
+        color: "#f59e0b",
+        position: 'bottom'
     }
 ];
 
@@ -162,7 +173,7 @@ const Experience = () => {
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     />
                 </div>
-                <div className="grid grid-cols-3 gap-8 w-full max-w-[1200px] h-[400px]">
+                <div className="grid grid-cols-4 gap-6 w-full max-w-[1400px] h-[400px]">
                     {journeyItems.map((item) => (
                         <HorizontalNode key={item.id} item={item} />
                     ))}
