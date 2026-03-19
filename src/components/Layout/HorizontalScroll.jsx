@@ -6,7 +6,7 @@ import 'lenis/dist/lenis.css'
 const HorizontalScroll = ({ children }) => {
     const targetRef = useRef(null);
     const containerRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(true);
+    const [isMobile, setIsMobile] = useState(null); // null = not yet determined
 
     useEffect(() => {
         const checkMobile = () => {
@@ -47,6 +47,11 @@ const HorizontalScroll = ({ children }) => {
     const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${((sectionCount - 1) / sectionCount) * 100}%`]);
 
     // Mobile: Simple vertical scroll
+    if (isMobile === null) {
+        // Pre-render with dark bg so there's no flash of empty page
+        return <div className="w-full min-h-screen bg-[#0a0a0a]" />;
+    }
+
     if (isMobile) {
         return (
             <div className="w-full">
@@ -61,7 +66,7 @@ const HorizontalScroll = ({ children }) => {
             <div className="sticky top-0 h-screen w-screen overflow-hidden">
                 <motion.div
                     ref={containerRef}
-                    style={{ x, display: "flex", height: "100vh", width: `${sectionCount * 100}vw` }}
+                    style={{ x, display: "flex", height: "100vh", width: `${sectionCount * 100}vw`, willChange: "transform" }}
                 >
                     {React.Children.map(children, (child, index) => (
                         <div

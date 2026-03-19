@@ -5,6 +5,18 @@ import { SiPostgresql, SiFastapi } from 'react-icons/si';
 import PortraitImg from '../../assets/hero_avatar_clean.png';
 import './Hero.scss';
 
+const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+});
+
+const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.7, ease: 'easeOut', delay },
+});
+
 const Hero = () => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -40,8 +52,7 @@ const Hero = () => {
             <div className="lg:hidden relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-8 sm:py-12 gap-6 sm:gap-8">
                 <motion.div
                     className="text-center"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    {...fadeUp(0.1)}
                 >
                     <h3 className="text-sm sm:text-base font-mono text-gray-400 mb-2">HELLO,</h3>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter leading-none">
@@ -54,8 +65,9 @@ const Hero = () => {
 
                 <motion.div
                     className="flex items-center justify-center"
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                 >
                     <img
                         src={PortraitImg}
@@ -66,8 +78,7 @@ const Hero = () => {
 
                 <motion.div
                     className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    {...fadeUp(0.3)}
                 >
 
                     <p className="text-base sm:text-lg font-light mb-3 sm:mb-4">
@@ -86,7 +97,11 @@ const Hero = () => {
             {/* Desktop Layout */}
             <div className="hidden lg:grid grid-cols-12 h-full px-12 relative z-10">
                 <div className="col-span-4 flex flex-col justify-center items-start gap-6 pl-12">
-                    <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+                    <motion.div
+                        initial={{ opacity: 0, x: -24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                    >
                         <p className="text-3xl font-light leading-snug">
                             I build scalable <span className="font-medium">web</span><br />
                             and <span className="font-medium">AI</span> solutions.
@@ -106,14 +121,19 @@ const Hero = () => {
                         src={PortraitImg}
                         alt="Kiran Choudhari"
                         className="w-auto max-h-[85vh] object-contain object-bottom drop-shadow-2xl"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                     />
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
                 </div>
 
                 <div className="col-span-4 flex flex-col justify-center items-end text-right pr-12">
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                    <motion.div
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+                    >
                         <h2 className="text-7xl xl:text-8xl font-black tracking-tighter leading-none mb-2">
                             I'M<br />KIRAN
                         </h2>

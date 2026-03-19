@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
 import HorizontalScroll from './components/Layout/HorizontalScroll';
@@ -17,7 +18,12 @@ import FloatingDock from './components/Layout/FloatingDock';
 
 function App() {
   return (
-    <div className="App">
+    <motion.div
+      className="App"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <SpeedInsights />
       <Analytics />
       <HorizontalScroll>
@@ -47,7 +53,7 @@ function App() {
         </Section>
 
       </HorizontalScroll>
-    </div>
+    </motion.div>
   );
 }
 
