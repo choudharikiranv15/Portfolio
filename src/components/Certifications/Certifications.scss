@@ -1,0 +1,210 @@
+.certifications-container {
+    width: 100%;
+    min-height: 100svh;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    background: #0a0a0a;
+
+    @media (min-width: 640px) {
+        padding: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+        height: 100%;
+        min-height: unset;
+        padding: 3rem 4rem;
+        overflow-y: visible;
+    }
+
+    .certifications-header {
+        margin-bottom: 1.5rem;
+
+        @media (min-width: 640px) {
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            @media (min-width: 640px) {
+                font-size: 2.25rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 3rem;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 3.5rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+
+            @media (min-width: 640px) {
+                font-size: 0.875rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .credentials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        width: 100%;
+
+        @media (min-width: 640px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 1280px) {
+            gap: 1.5rem;
+        }
+
+        .credential-card {
+            background: rgba(18, 18, 22, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+                background: rgba(25, 25, 32, 0.75);
+
+                .card-accent-bar {
+                    opacity: 1;
+                    height: 3px;
+                }
+            }
+
+            .card-accent-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                opacity: 0.7;
+                transition: all 0.3s ease;
+            }
+
+            .card-top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1.25rem;
+
+                .icon-wrapper {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 10px;
+                    border: 1px solid;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                }
+
+                .badge-pill {
+                    font-size: 0.68rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 9999px;
+                    border: 1px solid;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                }
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+
+                .meta-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 0.5rem;
+                    font-size: 0.72rem;
+
+                    .issuer {
+                        color: #94a3b8;
+                        font-weight: 500;
+                    }
+
+                    .date {
+                        color: #64748b;
+                        font-size: 0.68rem;
+                    }
+                }
+
+                .title {
+                    font-size: 1.05rem;
+                    font-weight: 700;
+                    color: #fff;
+                    line-height: 1.35;
+                    margin-bottom: 0.6rem;
+                }
+
+                .description {
+                    font-size: 0.78rem;
+                    color: #94a3b8;
+                    line-height: 1.5;
+                    margin-bottom: 1.25rem;
+                    flex-grow: 1;
+                }
+
+                .skills-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.35rem;
+
+                    .skill-chip {
+                        font-family: monospace;
+                        font-size: 0.65rem;
+                        background: rgba(255, 255, 255, 0.04);
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        color: #cbd5e1;
+                        padding: 0.15rem 0.45rem;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+}

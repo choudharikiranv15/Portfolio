@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ReactLenis } from '@studio-freight/react-lenis';
-import ThreeDBackground from '../Background/ThreeDBackground';
 import './Layout.scss';
 
 gsap.registerPlugin(ScrollTrigger);

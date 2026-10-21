@@ -39,12 +39,12 @@ const journeyItems = [
     {
         id: 4,
         type: 'work',
-        role: "Trainee System Engineer",
-        org: "Stratogent",
+        role: "Trainee System Engineer (SecOps)",
+        org: "Stratogent Technology Services",
         period: "Feb '26 — Present",
-        desc: "Kickstarting my full-time career, working on enterprise-grade systems and infrastructure solutions.",
-        tech: ["Systems", "Infrastructure", "Engineering"],
-        color: "#f59e0b",
+        desc: "Triaging 250+ security alerts across 15+ client environments. Investigating identity & AWS access anomalies, phishing emails, and automating SIEM reporting dashboards (saving 60-80 min/cycle).",
+        tech: ["Fluency SIEM", "Entra ID", "Defender", "SentinelOne", "TheHive", "ConnectWise"],
+        color: "#38bdf8",
         position: 'bottom'
     }
 ];

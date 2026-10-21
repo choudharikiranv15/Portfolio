@@ -9,12 +9,10 @@ import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
 import Experience from './components/Experience/Experience';
 import Works from './components/Works/Works';
-import Freelance from './components/Freelance/Freelance';
+import Certifications from './components/Certifications/Certifications';
 import Contact from './components/Contact/Contact';
 
 import './App.scss';
-
-import FloatingDock from './components/Layout/FloatingDock';
 
 function App() {
   return (
@@ -26,8 +24,8 @@ function App() {
     >
       <SpeedInsights />
       <Analytics />
+      
       <HorizontalScroll>
-
         <Section id="hero" className="sec-hero">
           <Hero />
         </Section>
@@ -44,14 +42,13 @@ function App() {
           <Works />
         </Section>
 
-        <Section id="freelance" className="sec-freelance">
-          <Freelance />
+        <Section id="certifications" className="sec-certifications">
+          <Certifications />
         </Section>
 
         <Section id="contact" className="sec-contact">
           <Contact />
         </Section>
-
       </HorizontalScroll>
     </motion.div>
   );

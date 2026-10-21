@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaPython, FaNodeJs, FaBrain } from 'react-icons/fa';
-import { SiPostgresql, SiFastapi } from 'react-icons/si';
+import { FaShieldAlt, FaBrain, FaRobot, FaPython } from 'react-icons/fa';
+import { SiDocker } from 'react-icons/si';
 import PortraitImg from '../../assets/hero_avatar_clean.png';
 import './Hero.scss';
 
@@ -30,14 +30,6 @@ const Hero = () => {
             ref={containerRef}
             className="w-full min-h-screen lg:h-full bg-[#0a0a0a] text-white overflow-hidden"
         >
-            {/* Live Status Indicator */}
-            <div className="absolute top-6 right-6 z-20 flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
-                <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Open to Work</span>
-            </div>
 
             {/* Background Text */}
             <div className="absolute inset-0 z-0 flex flex-col justify-center items-center pointer-events-none select-none overflow-hidden">
@@ -54,7 +46,10 @@ const Hero = () => {
                     className="text-center"
                     {...fadeUp(0.1)}
                 >
-                    <h3 className="text-sm sm:text-base font-mono text-gray-400 mb-2">HELLO,</h3>
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono mb-3">
+                        <FaShieldAlt className="text-xs" /> Security Operations & AI
+                    </div>
+                    <h3 className="text-sm sm:text-base font-mono text-gray-400 mb-1">HELLO,</h3>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter leading-none">
                         I'M KIRAN
                     </h2>
@@ -80,16 +75,15 @@ const Hero = () => {
                     className="text-center"
                     {...fadeUp(0.3)}
                 >
-
-                    <p className="text-base sm:text-lg font-light mb-3 sm:mb-4">
-                        I build scalable <span className="font-medium">web</span> and <span className="font-medium">AI</span> solutions.
+                    <p className="text-base sm:text-lg font-light mb-3 sm:mb-4 max-w-sm text-gray-200">
+                        Investigating enterprise security events & engineering <span className="font-medium text-white">evidence-first AI systems</span>.
                     </p>
-                    <div className="flex items-center justify-center gap-4 sm:gap-5 text-lg sm:text-xl text-gray-400">
-                        <FaPython className="hover:text-blue-400 transition-colors" />
-                        <FaNodeJs className="hover:text-green-500 transition-colors" />
-                        <FaBrain className="hover:text-purple-500 transition-colors" />
-                        <SiPostgresql className="hover:text-blue-300 transition-colors" />
-                        <SiFastapi className="hover:text-teal-400 transition-colors" />
+                    <div className="flex items-center justify-center gap-5 sm:gap-6 text-xl text-gray-400">
+                        <FaShieldAlt title="Security Operations" className="hover:text-cyan-400 transition-colors" />
+                        <FaBrain title="GenAI & RAG" className="hover:text-purple-400 transition-colors" />
+                        <FaRobot title="AI Agents" className="hover:text-indigo-400 transition-colors" />
+                        <FaPython title="Python" className="hover:text-blue-400 transition-colors" />
+                        <SiDocker title="Docker" className="hover:text-sky-400 transition-colors" />
                     </div>
                 </motion.div>
             </div>
@@ -102,17 +96,19 @@ const Hero = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                     >
-                        <p className="text-3xl font-light leading-snug">
-                            I build scalable <span className="font-medium">web</span><br />
-                            and <span className="font-medium">AI</span> solutions.
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono mb-4">
+                            <FaShieldAlt className="text-xs" /> Security Operations & AI
+                        </div>
+                        <p className="text-3xl font-light leading-snug text-gray-200">
+                            Investigating security events & engineering <span className="font-semibold text-white">evidence-first AI</span> solutions.
                         </p>
                     </motion.div>
                     <div className="flex items-center gap-6 text-2xl text-gray-400">
-                        <FaPython className="hover:text-blue-400 transition-colors cursor-pointer" />
-                        <FaNodeJs className="hover:text-green-500 transition-colors cursor-pointer" />
-                        <FaBrain className="hover:text-purple-500 transition-colors cursor-pointer" />
-                        <SiPostgresql className="hover:text-blue-300 transition-colors cursor-pointer" />
-                        <SiFastapi className="hover:text-teal-400 transition-colors cursor-pointer" />
+                        <FaShieldAlt title="Security Operations" className="hover:text-cyan-400 transition-colors cursor-pointer" />
+                        <FaBrain title="GenAI & RAG" className="hover:text-purple-400 transition-colors cursor-pointer" />
+                        <FaRobot title="AI Agents" className="hover:text-indigo-400 transition-colors cursor-pointer" />
+                        <FaPython title="Python" className="hover:text-blue-400 transition-colors cursor-pointer" />
+                        <SiDocker title="Docker" className="hover:text-sky-400 transition-colors cursor-pointer" />
                     </div>
                 </div>
 

@@ -1,38 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Services.scss';
-import { FaCode, FaBrain, FaServer, FaGlobe } from 'react-icons/fa';
+import { FaShieldAlt, FaBrain, FaTerminal, FaServer } from 'react-icons/fa';
 import { FiDownload } from 'react-icons/fi';
 import AnimatedHeading from '../Layout/AnimatedHeading';
 
 const services = [
     {
-        title: "AI & GenAI Engineer",
-        icon: <FaBrain />,
-        desc: "Building production-grade RAG systems, Multi-Agent architectures, and LLM inference pipelines.",
-        tags: ["RAG", "LangChain", "LLMs", "Vector DBs"],
+        title: "Security Operations & Triage",
+        icon: <FaShieldAlt />,
+        desc: "Investigating 250+ security alerts across 15+ client environments. Triaging identity, cloud, email, and endpoint threats.",
+        tags: ["Fluency SIEM", "Defender", "Entra ID", "SentinelOne", "TheHive"],
         resume: "/resumes/Kiran Vijaykumar Choudhari ML.pdf"
     },
     {
-        title: "Backend Architect",
+        title: "GenAI & Agentic Systems",
+        icon: <FaBrain />,
+        desc: "Designing multi-agent diagnostic pipelines, evidence-grounded RAG workflows, and resilient multi-provider LLM fallbacks.",
+        tags: ["Multi-Agent AI", "RAG", "OpenClaw", "LangChain", "Vector DBs"],
+        resume: "/resumes/Kiran Vijaykumar Choudhari ML.pdf"
+    },
+    {
+        title: "Threat Intel & CVE Analysis",
+        icon: <FaTerminal />,
+        desc: "Deterministic vulnerability research, correlating live NVD data and CISA KEV exploitation proof before LLM inference.",
+        tags: ["NVD", "CISA KEV", "CVSS Scoring", "OSINT", "Provenance"],
+        resume: "/resumes/Kiran Vijaykumar Choudhari ML.pdf"
+    },
+    {
+        title: "Cloud Security & Automation",
         icon: <FaServer />,
-        desc: "Designing high-throughput APIs, implementing stealth scrapers, and managing async job queues.",
-        tags: ["Node.js", "Flask", "Redis", "PostgreSQL"],
-        resume: "/resumes/Kiran Vijaykumar Choudhari SDE.pdf"
-    },
-    {
-        title: "DevOps & Cloud",
-        icon: <FaCode />,
-        desc: "Automating zero-downtime deployments, containerization, and cloud infrastructure management.",
-        tags: ["Docker", "Azure", "CI/CD", "GCP"],
-        resume: "/resumes/Kiran Vijaykumar Choudhari Devops.pdf"
-    },
-    {
-        title: "Full Stack Web",
-        icon: <FaGlobe />,
-        desc: "Crafting responsive, interactive applications with modern frontend frameworks and robust auth.",
-        tags: ["React", "TypeScript", "Node.js", "MongoDB"],
-        resume: "/resumes/Kiran Vijaykumar Choudhari Web Dev.pdf"
+        desc: "Automating SIEM reporting dashboards, investigating AWS ingress & access anomalies, and containerizing security tools.",
+        tags: ["AWS Security", "SIEM Dashboards", "Docker", "Python", "ConnectWise"],
+        resume: "/resumes/Kiran Vijaykumar Choudhari ML.pdf"
     }
 ];
 

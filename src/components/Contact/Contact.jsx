@@ -95,7 +95,7 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.8, duration: 0.6 }}
                 >
-                    Open for Freelance Projects in AI, Full Stack Development, and DevOps.
+                    Open to opportunities across Security Operations, Threat Intelligence, and AI Engineering.
                 </motion.p>
 
                 {/* CTA Button */}
