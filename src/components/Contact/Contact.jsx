@@ -87,16 +87,7 @@ const Contact = () => {
                     </h2>
                 </div>
 
-                {/* Subtitle */}
-                <motion.p
-                    className="subtitle"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                >
-                    Open to opportunities across Security Operations, Threat Intelligence, and AI Engineering.
-                </motion.p>
+
 
                 {/* CTA Button */}
 
